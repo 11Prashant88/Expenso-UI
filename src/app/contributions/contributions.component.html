@@ -1,0 +1,17 @@
+<button class="add-contribution" (click)="showAddContributionSpendPopup()">
+  Add Contribution
+</button>
+<div class="contribution-list">
+  <div class="contribution" *ngFor="let contribution of contributions">
+    <p class="contributor-name">{{ contribution.name }}</p>
+    <p class="contributed-amount">
+      {{ contribution.uom }}{{ contribution.amount }}
+    </p>
+  </div>
+</div>
+
+<app-add-spending-popup
+  *ngIf="isShowContributinSpendPopup"
+  (close)="closeAddContributionSpendPopup()"
+  [topic]="topic.CONTRIBUTION"
+></app-add-spending-popup>

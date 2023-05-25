@@ -1,0 +1,19 @@
+<button class="add-spend" (click)="showAddSpendPopup()">Add Spending</button>
+<div class="spending-list">
+  <div class="spending" *ngFor="let spending of spendings">
+    <div class="item-row1">
+      <p class="item-bought">
+        {{ spending.item }}
+        <span class="item-count">({{ spending.count }})</span>
+      </p>
+      <p class="spent-amount">{{ spending.uom }}{{ spending.price }}</p>
+    </div>
+    <p class="spent-date">{{ formatDate(spending.date) }}</p>
+  </div>
+</div>
+
+<app-add-spending-popup
+  *ngIf="isShowAddSpendPopup"
+  (close)="closeAddSpendPopup()"
+  [topic]="topic.SPEND"
+></app-add-spending-popup>

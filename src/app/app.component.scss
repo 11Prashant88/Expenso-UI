@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--app-bg-color);
+  position: relative;
+
+  .main-content {
+    flex: 1;
+    padding: 0px 10px;
+
+    .content {
+      padding-top: 10px;
+    }
+  }
+}

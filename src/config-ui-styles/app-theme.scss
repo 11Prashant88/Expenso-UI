@@ -1,0 +1,20 @@
+body[application-theme='app-light'] {
+  //app
+  --app-bg-color: #cecece2e;
+
+  //menu
+  --app-menu-item-text-color: gray;
+  --app-menu-item-active-text-color: #ff8298;
+
+  //tile
+  --app-tile-bg-color: #ffffff;
+
+  // button
+  --app-button-bg: #ff8298;
+  --app-button-box-shadow: #f77a9099 0px 0px 10px 2px;
+
+  //scrollbar
+  --app-scrollbar-width: 4px;
+  --app-scrollbar-track-color: pink;
+  --app-scrollbar-thumb-color: #ff8298;
+}
