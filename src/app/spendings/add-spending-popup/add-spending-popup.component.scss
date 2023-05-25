@@ -1,0 +1,76 @@
+.backdrop {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: #00000087;
+  top: 0;
+  left: 0;
+}
+.add-spend-popup {
+  height: 400px;
+  width: 100vw;
+  background-color: white;
+  position: absolute;
+  bottom: -400px;
+  left: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0px 50px;
+  padding-top: 50px;
+  animation: 0.8s forwards cubic-bezier(0.42, 0, 0.68, 1.71) animatepopup 0s;
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+
+    .label {
+      color: #ff8298;
+    }
+
+    .item-dropdown,
+    .item-count,
+    .submit-button {
+      width: 100%;
+      height: 40px;
+      border: 1px solid #ff8298;
+      border-radius: 5px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .submit-button {
+      background-color: #ff8298;
+      color: white;
+    }
+
+    .item-count {
+      padding: 0px 5px;
+    }
+  }
+
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: gray;
+    font-size: 20px;
+    padding: 0px 10px;
+    cursor: pointer;
+  }
+}
+
+@keyframes animatepopup {
+  0% {
+    bottom: -400px;
+  }
+
+  100% {
+    bottom: 0px;
+  }
+}

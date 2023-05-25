@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.add-spend {
+  background-color: var(--app-button-bg);
+  padding: 0px 10px;
+  height: 40px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.spending-list {
+  height: calc(100vh - 120px);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  padding-right: 10px;
+
+  .spending {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--app-tile-bg-color);
+
+    .item-row1 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .item-bought {
+        color: #545454;
+
+        .item-count {
+          color: gray;
+        }
+      }
+    }
+
+    .spent-amount {
+      color: #ff8298;
+    }
+
+    .spent-date {
+      font-size: 14px;
+      color: #9c9c9c;
+    }
+  }
+}
+
+.spending-list::-webkit-scrollbar {
+  width: var(--app-scrollbar-width);
+}
+.spending-list::-webkit-scrollbar-track {
+  background: var(--app-scrollbar-track-color);
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.spending-list::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: var(--app-scrollbar-thumb-color);
+}
