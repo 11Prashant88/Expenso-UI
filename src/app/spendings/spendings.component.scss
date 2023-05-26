@@ -3,14 +3,43 @@
   padding: 0;
   box-sizing: border-box;
 }
-.add-spend {
-  background-color: var(--app-button-bg);
-  padding: 0px 10px;
-  height: 40px;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+
+::ng-deep #toast-container {
+  .toast-success {
+    width: 100vw;
+    left: 12px;
+    top: -12px;
+  }
+
+  .toast-error {
+    width: 100vw;
+    left: 12px;
+    top: -12px;
+  }
+}
+
+.add-spend-totalcontainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .add-spend {
+    background-color: var(--app-button-bg);
+    padding: 0px 10px;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .total{
+    color: gray;
+    .total-value{
+      font-size: 24px;
+    }
+  }
 }
 
 .spending-list {

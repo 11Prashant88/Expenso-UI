@@ -1,17 +1,26 @@
-<button class="add-contribution" (click)="showAddContributionSpendPopup()">
-  Add Contribution
-</button>
+
+
+<div class="add-contribution-totalcontainer">
+  <button class="add-contribution" (click)="showAddContributionSpendPopup()">Add Contribution</button>
+  <div class="total">
+    <!-- <span class="total-label">Total :</span> -->
+    <span class="total-value">{{total | currency:"₹"}}</span>
+  </div>
+</div>
 <div class="contribution-list">
   <div class="contribution" *ngFor="let contribution of contributions">
     <p class="contributor-name">{{ contribution.name }}</p>
     <p class="contributed-amount">
-      {{ contribution.uom }}{{ contribution.amount }}
+      {{ contribution.uom }}{{ contribution.amount | currency:"₹"}}
     </p>
   </div>
 </div>
 
-<app-add-spending-popup
+<app-add-popup
   *ngIf="isShowContributinSpendPopup"
   (close)="closeAddContributionSpendPopup()"
   [topic]="topic.CONTRIBUTION"
-></app-add-spending-popup>
+  (add)="addContribution($event)"
+></app-add-popup>
+
+<div id="overlay" toastContainer></div>

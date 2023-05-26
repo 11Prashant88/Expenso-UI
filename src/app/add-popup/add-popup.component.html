@@ -1,0 +1,54 @@
+<div class="backdrop"></div>
+<div class="add-spend-popup">
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="group" *ngIf="topic === topicEnum.SPEND">
+      <label class="label" for="item">Item</label>
+      <select required name="item" ngModel #itemRef="ngModel" class="item-dropdown" id="item">
+        <option value="">Select</option>
+        <option value="Bat">Bat</option>
+        <option value="Ball">Ball</option>
+        <option value="Stump">Stump</option>
+        <option value="Grip">Grip</option>
+      </select>
+      <span class="err" *ngIf="!itemRef.valid && itemRef.touched">
+        <span *ngIf="itemRef?.errors?.required">Please select item</span>
+      </span>
+    </div>
+
+    <div class="group" *ngIf="topic === topicEnum.SPEND">
+      <label class="label" for="count">Count</label>
+      <input required name="count" ngModel #countRef="ngModel" id="count" type="number" class="txt-box" />
+      <span class="err" *ngIf="!countRef.valid && countRef.touched">
+        <span *ngIf="countRef?.errors?.required">Please enter count</span>
+      </span>
+    </div>
+
+    <div class="group" *ngIf="topic === topicEnum.CONTRIBUTION">
+      <label class="label" for="name">Name</label>
+      <input required name="name" ngModel #nameRef="ngModel" id="name" type="text" class="txt-box" />
+      <span class="err" *ngIf="!nameRef.valid && nameRef.touched">
+        <span *ngIf="nameRef?.errors?.required">Please enter name</span>
+      </span>
+    </div>
+
+    <div class="group" *ngIf="topic === topicEnum.CONTRIBUTION || topic === topicEnum.SPEND">
+      <label class="label" for="amount">{{topic === topicEnum.CONTRIBUTION ? 'Amount ₹' : 'Price ₹'}}</label>
+      <input required [name]="topic === topicEnum.CONTRIBUTION ? 'amount' : 'price'" ngModel #amountRef="ngModel" id="amount" type="number" class="txt-box" />
+      <span class="err" *ngIf="!amountRef.valid && amountRef.touched">
+        <span *ngIf="amountRef?.errors?.required">{{topic === topicEnum.CONTRIBUTION ? 'Please enter amount' : 'Please enter price'}}</span>
+      </span>
+    </div>
+
+    <div class="group">
+      <button class="submit-button" [disabled]="!f.valid">
+        {{(!contributionService.creating && !spendingService.creating) ? 'Submit' : ''}}
+        <div class="loader-container" *ngIf="contributionService.creating || spendingService.creating">
+          <ngx-pulse-loader color="#ffffff" class="item" size="10"></ngx-pulse-loader>
+        </div>
+      </button>
+    </div>
+  </form>
+  <span class="close" (click)="closePopup()"
+    ><i class="fa-solid fa-xmark"></i
+  ></span>
+</div>

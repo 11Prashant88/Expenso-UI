@@ -1,4 +1,9 @@
-<button class="add-spend" (click)="showAddSpendPopup()">Add Spending</button>
+<div class="add-spend-totalcontainer">
+  <button class="add-spend" (click)="showAddSpendPopup()">Add Spending</button>
+  <div class="total">
+    <span class="total-value">{{total | currency:"₹"}}</span>
+  </div>
+</div>
 <div class="spending-list">
   <div class="spending" *ngFor="let spending of spendings">
     <div class="item-row1">
@@ -6,14 +11,17 @@
         {{ spending.item }}
         <span class="item-count">({{ spending.count }})</span>
       </p>
-      <p class="spent-amount">{{ spending.uom }}{{ spending.price }}</p>
+      <p class="spent-amount">{{ spending.uom }}{{ spending.price | currency:"₹"}}</p>
     </div>
-    <p class="spent-date">{{ formatDate(spending.date) }}</p>
+    <p class="spent-date">{{ formatDate(spending.createdAt) }}</p>
   </div>
 </div>
 
-<app-add-spending-popup
+<app-add-popup
   *ngIf="isShowAddSpendPopup"
   (close)="closeAddSpendPopup()"
   [topic]="topic.SPEND"
-></app-add-spending-popup>
+  (add)="addSpending($event)"
+></app-add-popup>
+
+<div id="overlay" toastContainer></div>

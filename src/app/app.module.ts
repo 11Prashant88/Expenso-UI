@@ -8,11 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { ContributionsComponent } from './contributions/contributions.component';
 import { SpendingsComponent } from './spendings/spendings.component';
 import { HeaderComponent } from './header/header.component';
-import { AddSpendingPopupComponent } from './spendings/add-spending-popup/add-spending-popup.component';
 import { UtilizationComponent } from './utilization/utilization.component';
+import { AddPopupComponent } from './add-popup/add-popup.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnersModule } from 'ngx-spinners'
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule,
+    NgxSpinnersModule,
+    ToastrModule.forRoot({ positionClass: 'toast-top-right', timeOut: 2000, easeTime: 500}),
+    BrowserAnimationsModule],
   declarations: [
     AppComponent,
     HelloComponent,
@@ -20,7 +27,7 @@ import { UtilizationComponent } from './utilization/utilization.component';
     SpendingsComponent,
     UtilizationComponent,
     HeaderComponent,
-    AddSpendingPopupComponent,
+    AddPopupComponent
   ],
   bootstrap: [AppComponent],
 })

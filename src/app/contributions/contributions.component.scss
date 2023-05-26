@@ -4,15 +4,44 @@
   box-sizing: border-box;
 }
 
-.add-contribution {
-  background-color: var(--app-button-bg);
-  padding: 0px 10px;
-  height: 40px;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
+  ::ng-deep #toast-container {
+    .toast-success {
+      width: 100vw;
+      left: 12px;
+      top: -12px;
+    }
+
+    .toast-error {
+      width: 100vw;
+      left: 12px;
+      top: -12px;
+    }
+  }
+
+  .add-contribution-totalcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .add-contribution {
+      background-color: var(--app-button-bg);
+      padding: 0px 10px;
+      height: 40px;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .total{
+      color: gray;
+      .total-value{
+        font-size: 24px;
+      }
+    }
+  }
 
 .contribution-list {
   height: calc(100vh - 110px);
@@ -31,6 +60,7 @@
     padding: 10px;
     border-radius: 5px;
     background-color: var(--app-tile-bg-color);
+
     .contributor-name {
       color: #545454;
     }
@@ -44,11 +74,13 @@
 .contribution-list::-webkit-scrollbar {
   width: var(--app-scrollbar-width);
 }
+
 .contribution-list::-webkit-scrollbar-track {
   background: var(--app-scrollbar-track-color);
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
+
 .contribution-list::-webkit-scrollbar-thumb {
   -webkit-border-radius: 6px;
   border-radius: 6px;
