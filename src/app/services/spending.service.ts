@@ -3,6 +3,7 @@ import { Contribution } from "../models/contribution.model";
 import { HttpClient } from '@angular/common/http'
 import { delay } from 'rxjs/operators'
 import { Spending } from "../models/spending.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn:'root'
@@ -13,9 +14,9 @@ export class SpendingService{
 
     }
     getSpendings(){
-        return this.http.get<Spending[]>('http://localhost:3000/spendings');
+        return this.http.get<Spending[]>(`${environment.apiUrl}/spendings`);
     }
     addSpending(spending: Spending){
-        return this.http.post<Spending>('http://localhost:3000/spendings', spending);
+        return this.http.post<Spending>(`${environment.apiUrl}/spendings`, spending);
     }
 }
