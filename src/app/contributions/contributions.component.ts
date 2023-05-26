@@ -53,7 +53,7 @@ export class ContributionsComponent implements OnInit {
       this.refreshTotal();
       this.closeAddContributionSpendPopup()
       this.contributionsService.creating = false;
-      this.toastr.success('Contribution added successfully!', 'Success');
+      this.toastr.success(`Contribution done : ₹${contribution.amount}`, 'Success');
     }, (err)=>{
       this.contributionsService.creating = false;
     })
