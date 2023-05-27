@@ -25,7 +25,8 @@ export class SpendingsComponent implements OnInit {
   }
   isShowAddSpendPopup: boolean = false;
 
-  spendings: Spending[];
+  spendings: {[key:string]:Spending[]}[] = [];
+  allSpendings: Spending[];
 
   ngOnInit() {
     this.toastr.overlayContainer = this.toastContainer;
@@ -53,8 +54,13 @@ export class SpendingsComponent implements OnInit {
 
   getSpendings(){
     this.spendingService.getSpendings().subscribe((spendings: Spending[])=>{
-      this.spendings = spendings;
-      // this.spendings = _.groupBy(this.spendings, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      this.allSpendings = spendings;
+      spendings = _.groupBy(spendings, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(spendings).forEach((k)=>{
+        let obj = {}
+        obj[k] = spendings[k]
+        this.spendings.push(obj)
+      })
       this.refreshTotal();
     })
   }
@@ -62,7 +68,15 @@ export class SpendingsComponent implements OnInit {
   addSpending(spending: Spending){
     this.spendingService.creating = true;
     this.spendingService.addSpending(spending).subscribe((spending: Spending)=>{
-      this.spendings = [...this.spendings, spending];
+      this.spendings = [];
+      this.allSpendings = [...this.allSpendings, spending];
+      let spendings = this.allSpendings;
+      spendings = _.groupBy(this.allSpendings, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(spendings).forEach((k)=>{
+        let obj = {}
+        obj[k] = spendings[k]
+        this.spendings.push(obj)
+      })
       this.refreshTotal();
       this.closeAddSpendPopup();
       this.spendingService.creating = false;
@@ -75,6 +89,18 @@ export class SpendingsComponent implements OnInit {
   }
 
   refreshTotal(){
-    this.total = this.spendings.reduce((total, spending)=>{return total + spending.price}, 0)
+    this.total = 0;
+    this.spendings.forEach((spendingo)=>{
+      let monthlySpendings = spendingo[Object.keys(spendingo)[0]];
+      this.total = this.total + monthlySpendings.reduce((total, spending)=>{return total + spending.price}, 0)
+    })
+  }
+
+  monthlySpendings(spendingo:{[s: string]:Spending}){
+    return spendingo[Object.keys(spendingo)[0]]
+  }
+
+  getMonthHeader(spendingo:{[s: string]:Spending[]}){
+    return Object.keys(spendingo)[0];
   }
 }

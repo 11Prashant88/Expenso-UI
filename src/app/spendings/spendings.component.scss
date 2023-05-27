@@ -45,62 +45,63 @@
 .spending-list {
   height: calc(100vh - 120px);
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 10px;
   margin-top: 10px;
   padding-right: 10px;
 
-  .spending {
+  .spending-container{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: var(--app-tile-bg-color);
-
-    .date-item-container {
+    flex-direction: column;
+    gap: 10px;
+    .spending {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      .item-bought {
-        color: #545454;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: var(--app-tile-bg-color);
+  
+      .date-item-container {
         display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        font-size: 14px;
-
-        .item-count {
-          color: #949494;
+        gap: 10px;
+        .item-bought {
+          color: #545454;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+  
+          .item-count {
+            color: #949494;
+          }
         }
-      }
-
-      .divider{
-        height: 90%;
-        width: 1px;
-        background-color: #aeaeae;
+  
+        .divider{
+          height: 90%;
+          width: 1px;
+          background-color: #aeaeae;
+        }
+    
+        .spent-date {
+          font-size: 12px;
+          color: #a5b75c;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+  
+          .moth-day{
+  
+          }
+          .year{
+  
+          }
+        }
       }
   
-      .spent-date {
-        font-size: 12px;
-        color: #a5b75c;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-
-        .moth-day{
-
-        }
-        .year{
-
-        }
+      .spent-amount {
+        color: #ff8298;
       }
-    }
-
-    .spent-amount {
-      color: #ff8298;
     }
   }
 }
