@@ -80,7 +80,7 @@ export class SpendingsComponent implements OnInit {
       this.refreshTotal();
       this.closeAddSpendPopup();
       this.spendingService.creating = false;
-      this.toastr.success('Spending added successfully!', 'Success');
+      this.toastr.success(`expense added : ₹${spending.count}`, 'Success');
     }, (err)=>{
 
       this.toastr.error(err.error.error, 'Failed');
