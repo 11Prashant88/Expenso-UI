@@ -6,14 +6,26 @@
 </div>
 <div class="spending-list">
   <div class="spending" *ngFor="let spending of spendings">
-    <div class="item-row1">
-      <p class="item-bought">
-        {{ spending.item }}
-        <span class="item-count">({{ spending.count }})</span>
+    <div class="date-item-container">
+      <p class="spent-date">
+        <span class="month-day">{{ formatMonth(spending.createdAt) | uppercase }}</span>
+        <span class="year">{{ formatDay(spending.createdAt) }}</span>
       </p>
-      <p class="spent-amount">{{ spending.uom }}{{ spending.price | currency:"₹"}}</p>
+      <div class="divider"></div>
+      <p class="item-bought">
+        
+        <ng-container [ngSwitch]="spending.item">
+          <img *ngSwitchCase="'Bat'" height="30" width="30" src="../../assets/images/bat.svg" alt="">
+          <img *ngSwitchCase="'Ball'" height="30" width="30" src="../../assets/images/ball.svg" alt="">
+          <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
+          <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
+        </ng-container>
+        <span>{{ spending.item | uppercase }}</span>
+        <span class="item-count">&nbsp;({{spending.count }})</span>
+        
+      </p>
     </div>
-    <p class="spent-date">{{ formatDate(spending.createdAt) }}</p>
+    <p class="spent-amount">{{ spending.uom }}{{ spending.price | currency:"₹"}}</p>
   </div>
 </div>
 

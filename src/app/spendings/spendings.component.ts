@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { TopicEnum } from '../enums/topic.enum';
 import { SpendingService } from '../services/spending.service';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-spendings',
@@ -34,6 +35,14 @@ export class SpendingsComponent implements OnInit {
   formatDate(date: Date) {
     return moment(date).format('MMM, DD, YYYY');
   }
+
+  formatMonth(date: Date){
+    return moment(date).format('MMM');
+  }
+
+  formatDay(date: Date){
+    return moment(date).format('D');
+  }
   showAddSpendPopup() {
     this.isShowAddSpendPopup = true;
   }
@@ -45,6 +54,7 @@ export class SpendingsComponent implements OnInit {
   getSpendings(){
     this.spendingService.getSpendings().subscribe((spendings: Spending[])=>{
       this.spendings = spendings;
+      // this.spendings = _.groupBy(this.spendings, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
       this.refreshTotal();
     })
   }
