@@ -18,13 +18,13 @@
   }
 }
 
-.add-spend-totalcontainer{
+.add-expense-totalcontainer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  .add-spend {
+  .add-expense {
     background-color: var(--app-button-bg);
     padding: 0px 10px;
     height: 40px;
@@ -42,13 +42,13 @@
   }
 }
 
-.spending-list {
+.expense-list {
   height: calc(100vh - 120px);
   overflow-y: scroll;
   margin-top: 10px;
   padding-right: 10px;
 
-  .spending-container{
+  .expense-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -83,7 +83,7 @@
           background-color: #aeaeae;
         }
     
-        .spent-date {
+        .expense-date {
           font-size: 12px;
           color: #a5b75c;
           display: flex;
@@ -99,22 +99,22 @@
         }
       }
   
-      .spent-amount {
+      .expnse-amount {
         color: #ff8298;
       }
     }
   }
 }
 
-.spending-list::-webkit-scrollbar {
+.expense-list::-webkit-scrollbar {
   width: var(--app-scrollbar-width);
 }
-.spending-list::-webkit-scrollbar-track {
+.expense-list::-webkit-scrollbar-track {
   background: var(--app-scrollbar-track-color);
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
-.spending-list::-webkit-scrollbar-thumb {
+.expense-list::-webkit-scrollbar-thumb {
   -webkit-border-radius: 6px;
   border-radius: 6px;
   background: var(--app-scrollbar-thumb-color);
