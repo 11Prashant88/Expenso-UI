@@ -13,6 +13,7 @@ Drilldown(Highcharts);
 export class UtilizationComponent implements OnInit {
   public expenses: any[] = [];
   public options: any;
+  public loadingExpenses: boolean = false;
 
   constructor(private expenseService: ExpenseService) {}
 
@@ -21,10 +22,14 @@ export class UtilizationComponent implements OnInit {
   }
 
   getExpenses(){
+    this.loadingExpenses = true;
     this.expenseService.getExpenses().pipe(map((expenses)=>{return expenses.map((s)=>{return {name:s.item, y:s.price}})})).subscribe((expenses:[])=>{
       this.expenses = this.groupByName(expenses, 'name');
       this.prepareChart();
       this.drawChart();
+      this.loadingExpenses = false;
+    }, ()=>{
+      this.loadingExpenses = false;
     })
   }
 

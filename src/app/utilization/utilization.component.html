@@ -1,1 +1,7 @@
-<div id="container"></div>
+<div id="container" *ngIf="!loadingExpenses; else loader"></div>
+
+<ng-template #loader>
+    <div class="loader-container">
+      <ngx-square-loader color="pink" class="item" size="30"></ngx-square-loader>
+    </div>
+  </ng-template>

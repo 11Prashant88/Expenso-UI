@@ -1,5 +1,4 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Contribution } from "../models/contribution.model";
+import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http'
 import { delay } from 'rxjs/operators'
 import { Expense } from "../models/expense.model";
@@ -14,7 +13,7 @@ export class ExpenseService{
 
     }
     getExpenses(){
-        return this.http.get<Expense[]>(`${environment.apiUrl}/expenses`).pipe(delay(4000));
+        return this.http.get<Expense[]>(`${environment.apiUrl}/expenses`);
     }
     addExpense(expense: Expense){
         return this.http.post<Expense>(`${environment.apiUrl}/expenses`, expense);
