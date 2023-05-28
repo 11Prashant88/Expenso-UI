@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { TopicEnum } from '../enums/topic.enum';
 import { Contribution } from '../models/contribution.model';
 import { ContributionService } from '../services/contribution.service';
-import { Expenservice } from '../services/exense.service';
+import { Expenservice } from '../services/expense.service';
 
 @Component({
   selector: 'app-add-popup',
