@@ -1,42 +1,42 @@
-<div class="add-spend-totalcontainer">
-  <button class="add-spend" (click)="showAddSpendPopup()">Add Spending</button>
+<div class="add-expense-totalcontainer">
+  <button class="add-expense" (click)="showExpenseSpendPopup()">Add Expense</button>
   <div class="total">
     <span class="total-value">{{total | currency:"₹"}}</span>
   </div>
 </div>
-<div class="spending-list">
-  <div class="spending-container" *ngFor="let spendingo of spendings">
-    <p>{{getMonthHeader(spendingo)}}</p>
-    <div class="spending" *ngFor="let spending of monthlySpendings(spendingo)">
+<div class="expense-list">
+  <div class="expense-container" *ngFor="let expenso of expenses">
+    <p>{{getMonthHeader(expenso)}}</p>
+    <div class="expense" *ngFor="let expense of monthlyExpenses(expenso)">
       <div class="date-item-container">
-        <p class="spent-date">
-          <span class="month-day">{{ formatMonth(spending.createdAt) | uppercase }}</span>
-          <span class="year">{{ formatDay(spending.createdAt) }}</span>
+        <p class="expense-date">
+          <span class="month-day">{{ formatMonth(expense.createdAt) | uppercase }}</span>
+          <span class="year">{{ formatDay(expense.createdAt) }}</span>
         </p>
         <div class="divider"></div>
         <p class="item-bought">
           
-          <ng-container [ngSwitch]="spending.item">
+          <ng-container [ngSwitch]="expense.item">
             <img *ngSwitchCase="'Bat'" height="30" width="30" src="../../assets/images/bat.svg" alt="">
             <img *ngSwitchCase="'Ball'" height="30" width="30" src="../../assets/images/ball.svg" alt="">
             <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
             <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
           </ng-container>
-          <span>{{ spending.item | uppercase }}</span>
-          <span class="item-count">&nbsp;({{spending.count }})</span>
+          <span>{{ expense.item | uppercase }}</span>
+          <span class="item-count">&nbsp;({{expense.count }})</span>
           
         </p>
       </div>
-      <p class="spent-amount">{{ spending.uom }}{{ spending.price | currency:"₹"}}</p>
+      <p class="expense-amount">{{ expense.uom }}{{ expense.price | currency:"₹"}}</p>
     </div>
   </div>
 </div>
 
 <app-add-popup
-  *ngIf="isShowAddSpendPopup"
-  (close)="closeAddSpendPopup()"
-  [topic]="topic.SPEND"
-  (add)="addSpending($event)"
+  *ngIf="isShowAddExpensePopup"
+  (close)="closeAddExpensePopup()"
+  [topic]="topic.EXPENSE"
+  (add)="addExpense($event)"
 ></app-add-popup>
 
 <div id="overlay" toastContainer></div>
