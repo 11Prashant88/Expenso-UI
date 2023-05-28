@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { TopicEnum } from '../enums/topic.enum';
 import { Contribution } from '../models/contribution.model';
 import { ContributionService } from '../services/contribution.service';
-import { SpendingService } from '../services/spending.service';
+import { Expenservice } from '../services/exense.service';
 
 @Component({
   selector: 'app-add-popup',
@@ -16,7 +16,7 @@ export class AddPopupComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
   @Output() add = new EventEmitter<Contribution>();
   @ViewChild('f') f: NgForm;
-  constructor(public contributionService: ContributionService, public spendingService: SpendingService) {
+  constructor(public contributionService: ContributionService, public expenseService: ExpenseService) {
     this.topicEnum = TopicEnum;
   }
 
