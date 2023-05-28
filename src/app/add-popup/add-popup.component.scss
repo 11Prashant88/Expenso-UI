@@ -9,7 +9,7 @@
 .err{
   color: #ff0000d9;
 }
-.add-epense-popup {
+.add-expense-popup {
   min-height: 400px;
   width: 100vw;
   background-color: white;
@@ -50,7 +50,7 @@
     }
 
     .submit-button {
-      background-color: #ff8298;
+      background: var(--app-button-bg);
       border: none;
       color: white;
       &:disabled{

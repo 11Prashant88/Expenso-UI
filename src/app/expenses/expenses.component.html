@@ -4,7 +4,7 @@
     <span class="total-value">{{total | currency:"₹"}}</span>
   </div>
 </div>
-<div class="expense-list">
+<div class="expense-list" *ngIf="expenses.length; else loader">
   <div class="expense-container" *ngFor="let expenso of expenses">
     <p>{{getMonthHeader(expenso)}}</p>
     <div class="expense" *ngFor="let expense of monthlyExpenses(expenso)">
@@ -22,7 +22,7 @@
             <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
             <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
           </ng-container>
-          <span>{{ expense.item | uppercase }}</span>
+          <span class="item-name">{{ expense.item }}</span>
           <span class="item-count">&nbsp;({{expense.count }})</span>
           
         </p>
@@ -31,6 +31,12 @@
     </div>
   </div>
 </div>
+
+<ng-template #loader>
+  <div class="loader-container">
+    <ngx-square-loader color="pink" class="item" size="30"></ngx-square-loader>
+  </div>
+</ng-template>
 
 <app-add-popup
   *ngIf="isShowAddExpensePopup"

@@ -1,5 +1,3 @@
-
-
 <div class="add-contribution-totalcontainer">
   <button class="add-contribution" (click)="showAddContributionSpendPopup()">Add Contribution</button>
   <div class="total">
@@ -7,20 +5,33 @@
     <span class="total-value">{{total | currency:"₹"}}</span>
   </div>
 </div>
-<div class="contribution-list">
-  <div class="contribution" *ngFor="let contribution of contributions">
-    <p class="contributor-name">{{ contribution.name }}</p>
-    <p class="contributed-amount">
-      {{ contribution.uom }}{{ contribution.amount | currency:"₹"}}
-    </p>
+<div class="contribution-list" *ngIf="contributions.length; else loader">
+  <div class="contribution-container" *ngFor="let contro of contributions">
+    <p>{{getMonthHeader(contro)}}</p>
+    <div class="contribution" *ngFor="let contribution of monthlyContributions(contro)">
+      <div class="contributor-name-date-container">
+        <p class="contributed-date">
+          <span class="month-day">{{ formatMonth(contribution.createdAt) | uppercase }}</span>
+          <span class="year">{{ formatDay(contribution.createdAt) }}</span>
+        </p>
+        <div class="divider"></div>
+        <p class="contributor-name">{{ contribution.name }}</p>
+      </div>
+
+      <p class="contributed-amount">
+        {{ contribution.uom }}{{ contribution.amount | currency:"₹"}}
+      </p>
+    </div>
   </div>
 </div>
 
-<app-add-popup
-  *ngIf="isShowContributinSpendPopup"
-  (close)="closeAddContributionSpendPopup()"
-  [topic]="topic.CONTRIBUTION"
-  (add)="addContribution($event)"
-></app-add-popup>
+<ng-template #loader>
+  <div class="loader-container">
+    <ngx-square-loader color="pink" class="item" size="30"></ngx-square-loader>
+  </div>
+</ng-template>
+
+<app-add-popup *ngIf="isShowContributinSpendPopup" (close)="closeAddContributionSpendPopup()"
+  [topic]="topic.CONTRIBUTION" (add)="addContribution($event)"></app-add-popup>
 
 <div id="overlay" toastContainer></div>

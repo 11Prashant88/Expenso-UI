@@ -26,7 +26,7 @@ export class ExpensesComponent implements OnInit {
   isShowAddExpensePopup: boolean = false;
 
   expenses: {[key:string]:Expense[]}[] = [];
-  allExpenses: Expense[];
+  allExpenses: Expense[] = [];
 
   ngOnInit() {
     this.toastr.overlayContainer = this.toastContainer;

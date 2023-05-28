@@ -14,7 +14,7 @@ export class ExpenseService{
 
     }
     getExpenses(){
-        return this.http.get<Expense[]>(`${environment.apiUrl}/expenses`);
+        return this.http.get<Expense[]>(`${environment.apiUrl}/expenses`).pipe(delay(4000));
     }
     addExpense(expense: Expense){
         return this.http.post<Expense>(`${environment.apiUrl}/expenses`, expense);

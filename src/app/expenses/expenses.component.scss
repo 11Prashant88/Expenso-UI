@@ -18,6 +18,17 @@
   }
 }
 
+.loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
 .add-expense-totalcontainer{
   display: flex;
   flex-direction: row;
@@ -25,7 +36,7 @@
   align-items: center;
 
   .add-expense {
-    background-color: var(--app-button-bg);
+    background: var(--app-button-bg);
     padding: 0px 10px;
     height: 40px;
     border: none;
@@ -43,7 +54,7 @@
 }
 
 .expense-list {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 110px);
   overflow-y: scroll;
   margin-top: 10px;
   padding-right: 10px;
@@ -56,7 +67,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: 10px;
+      padding: 18px 10px;
       border-radius: 5px;
       background-color: var(--app-tile-bg-color);
   
@@ -67,25 +78,29 @@
         align-items: center;
         gap: 10px;
         .item-bought {
-          color: #545454;
+          
           display: flex;
           align-items: center;
-          font-size: 14px;
+          
   
+          .item-name{
+            color: black;
+            // font-weight: bold;
+          }
           .item-count {
             color: #949494;
           }
         }
   
         .divider{
-          height: 90%;
+          height: 100%;
           width: 1px;
           background-color: #aeaeae;
         }
     
         .expense-date {
           font-size: 12px;
-          color: #a5b75c;
+          color: #adadad;
           display: flex;
           flex-direction: column;
           text-align: center;
@@ -99,8 +114,9 @@
         }
       }
   
-      .expnse-amount {
-        color: #ff8298;
+      .expense-amount {
+        color: black;
+        // font-weight: bold;
       }
     }
   }

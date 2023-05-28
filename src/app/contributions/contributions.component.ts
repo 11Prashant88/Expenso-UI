@@ -3,6 +3,8 @@ import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import { TopicEnum } from '../enums/topic.enum';
 import { Contribution } from '../models/contribution.model';
 import { ContributionService } from '../services/contribution.service';
+import * as moment from 'moment';
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-contributions',
@@ -13,6 +15,7 @@ export class ContributionsComponent implements OnInit {
   topic
 
   public total: number;
+  public loadingContributions: boolean = false;
 
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
@@ -22,7 +25,8 @@ export class ContributionsComponent implements OnInit {
     this.topic = TopicEnum
   }
 
-  contributions: Contribution[];
+  contributions: {[key:string]:Contribution[]}[] = [];
+  allContributions: Contribution[] = [];
 
   isShowContributinSpendPopup: boolean = false;
 
@@ -39,17 +43,43 @@ export class ContributionsComponent implements OnInit {
     this.isShowContributinSpendPopup = false;
   }
 
+  formatMonth(date: Date){
+    return moment(date).format('MMM');
+  }
+
+  formatDay(date: Date){
+    return moment(date).format('D');
+  }
+
   getContributions(){
-    this.contributionsService.getContributions().subscribe((response: Contribution[])=>{
-      this.contributions = response;
+    this.loadingContributions = true;
+    this.contributionsService.getContributions().subscribe((contributions: Contribution[])=>{
+      this.allContributions = contributions;
+      contributions = _.groupBy(contributions, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(contributions).forEach((k)=>{
+        let obj = {}
+        obj[k] = contributions[k]
+        this.contributions.push(obj)
+      })
       this.refreshTotal();
+      this.loadingContributions = false;
+    }, ()=>{
+      this.loadingContributions = false;
     })
   }
 
   addContribution(contribution: Contribution){
     this.contributionsService.creating = true;
     this.contributionsService.addContribution(contribution).subscribe((contribution: Contribution)=>{
-      this.contributions = [...this.contributions, contribution];
+      this.contributions = [];
+      this.allContributions = [...this.allContributions, contribution];
+      let expenses = this.allContributions;
+      expenses = _.groupBy(this.allContributions, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(expenses).forEach((k)=>{
+        let obj = {}
+        obj[k] = expenses[k]
+        this.contributions.push(obj)
+      })
       this.refreshTotal();
       this.closeAddContributionSpendPopup()
       this.contributionsService.creating = false;
@@ -60,6 +90,18 @@ export class ContributionsComponent implements OnInit {
   }
 
   public refreshTotal(){
-    this.total = this.contributions.reduce((total, spending)=>{return total + spending.amount}, 0)
+    this.total = 0;
+    this.contributions.forEach((contribution)=>{
+      let monthlyContributions = contribution[Object.keys(contribution)[0]];
+      this.total = this.total + monthlyContributions.reduce((total, contro)=>{return total + contro.amount}, 0)
+    })
+  }
+
+  monthlyContributions(contro:{[s: string]:Contribution}){
+    return contro[Object.keys(contro)[0]]
+  }
+
+  getMonthHeader(contro:{[s: string]:Contribution[]}){
+    return Object.keys(contro)[0];
   }
 }
