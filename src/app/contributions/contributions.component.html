@@ -5,7 +5,7 @@
     <span class="total-value">{{total | currency:"₹"}}</span>
   </div>
 </div>
-<div class="contribution-list" *ngIf="contributions.length; else loader">
+<div class="contribution-list" *ngIf="!loadingContributions; else loader">
   <div class="contribution-container" *ngFor="let contro of contributions">
     <p>{{getMonthHeader(contro)}}</p>
     <div class="contribution" *ngFor="let contribution of monthlyContributions(contro)">

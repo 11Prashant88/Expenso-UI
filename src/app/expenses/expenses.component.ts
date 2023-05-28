@@ -16,6 +16,8 @@ export class ExpensesComponent implements OnInit {
 
   public total: number;
 
+  public loadingExpenses: boolean = false;
+
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
 
@@ -53,6 +55,7 @@ export class ExpensesComponent implements OnInit {
   }
 
   getExpenses(){
+    this.loadingExpenses = true;
     this.expenseService.getExpenses().subscribe((expenses: Expense[])=>{
       this.allExpenses = expenses;
       expenses = _.groupBy(expenses, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
@@ -62,6 +65,9 @@ export class ExpensesComponent implements OnInit {
         this.expenses.push(obj)
       })
       this.refreshTotal();
+      this.loadingExpenses = false;
+    }, ()=>{
+      this.loadingExpenses = false;
     })
   }
 
