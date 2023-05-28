@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import Drilldown from 'highcharts/modules/drilldown';
 import { map } from 'rxjs/operators';
-import { Expense } from '../models/spending.model';
+import { Expense } from '../models/expense.model';
 import { ExpenseService } from '../services/expense.service';
 Drilldown(Highcharts);
 @Component({
@@ -20,7 +20,7 @@ export class UtilizationComponent implements OnInit {
     this.getExpenses();
   }
 
-  getSpendings(){
+  getExpenses(){
     this.expenseService.getExpenses().pipe(map((expense)=>{return expense.map((s)=>{return {name:s.item, y:s.price}})})).subscribe((spendings:[])=>{
       this.expenses = this.groupByName(expenses, 'name');
       this.prepareChart();
