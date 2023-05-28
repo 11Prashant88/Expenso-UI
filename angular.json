@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Spendingo-UI": {
+    "Expenso-UI": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Spendingo-UI",
+            "outputPath": "dist/Expenso-UI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Spendingo-UI:build"
+            "browserTarget": "Expenso-UI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Spendingo-UI:build:production"
+              "browserTarget": "Expenso-UI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Spending-UI:build"
+            "browserTarget": "Expenso-UI:build"
           }
         },
         "test": {
@@ -112,15 +112,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Spendingo-UI:serve"
+            "devServerTarget": "Expenso-UI:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Spendingo-UI:serve:production"
+              "devServerTarget": "Expenso-UI:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Spendingo-UI"
+  "defaultProject": "Expenso-UI"
 }
