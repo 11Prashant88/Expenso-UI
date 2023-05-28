@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import Drilldown from 'highcharts/modules/drilldown';
 import { map } from 'rxjs/operators';
-import { Spending } from '../models/spending.model';
-import { SpendingService } from '../services/spending.service';
+import { Expense } from '../models/spending.model';
+import { ExpenseService } from '../services/expense.service';
 Drilldown(Highcharts);
 @Component({
   selector: 'app-utilization',
@@ -11,26 +11,26 @@ Drilldown(Highcharts);
   styleUrls: ['./utilization.component.css'],
 })
 export class UtilizationComponent implements OnInit {
-  public spendings: any[] = [];
+  public expenses: any[] = [];
   public options: any;
 
-  constructor(private spendingService: SpendingService) {}
+  constructor(private expenseService: ExpenseService) {}
 
   ngOnInit() {
-    this.getSpendings();
+    this.getExpenses();
   }
 
   getSpendings(){
-    this.spendingService.getSpendings().pipe(map((spending)=>{return spending.map((s)=>{return {name:s.item, y:s.price}})})).subscribe((spendings:[])=>{
-      this.spendings = this.groupByName(spendings, 'name');
+    this.expenseService.getExpenses().pipe(map((expense)=>{return expense.map((s)=>{return {name:s.item, y:s.price}})})).subscribe((spendings:[])=>{
+      this.expenses = this.groupByName(expenses, 'name');
       this.prepareChart();
       this.drawChart();
     })
   }
 
-  groupByName(spendings, prop) {
+  groupByName(expenses, prop) {
     let arr = []
-    return spendings.reduce(function (acc, item) {
+    return expenses.reduce(function (acc, item) {
       let key = item[prop]
       if(!arr.includes(key)){
         arr.push(key);
@@ -90,7 +90,7 @@ export class UtilizationComponent implements OnInit {
         {
           name: 'Spent',
           colorByPoint: true,
-          data: this.spendings
+          data: this.expenses
         },
       ],
     };
