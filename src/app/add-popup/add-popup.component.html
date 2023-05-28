@@ -1,7 +1,7 @@
 <div class="backdrop"></div>
-<div class="add-spend-popup">
+<div class="add-expense-popup">
   <form (ngSubmit)="onSubmit()" #f="ngForm">
-    <div class="group" *ngIf="topic === topicEnum.SPEND">
+    <div class="group" *ngIf="topic === topicEnum.EXPENSE">
       <label class="label" for="item">Item</label>
       <select required name="item" ngModel #itemRef="ngModel" class="item-dropdown" id="item">
         <option value="">Select</option>
@@ -15,7 +15,7 @@
       </span>
     </div>
 
-    <div class="group" *ngIf="topic === topicEnum.SPEND">
+    <div class="group" *ngIf="topic === topicEnum.EXPENSE">
       <label class="label" for="count">Count</label>
       <input required name="count" ngModel #countRef="ngModel" id="count" type="number" class="txt-box" />
       <span class="err" *ngIf="!countRef.valid && countRef.touched">
@@ -31,7 +31,7 @@
       </span>
     </div>
 
-    <div class="group" *ngIf="topic === topicEnum.CONTRIBUTION || topic === topicEnum.SPEND">
+    <div class="group" *ngIf="topic === topicEnum.CONTRIBUTION || topic === topicEnum.EXPENSE">
       <label class="label" for="amount">{{topic === topicEnum.CONTRIBUTION ? 'Amount ₹' : 'Price ₹'}}</label>
       <input required [name]="topic === topicEnum.CONTRIBUTION ? 'amount' : 'price'" ngModel #amountRef="ngModel" id="amount" type="number" class="txt-box" />
       <span class="err" *ngIf="!amountRef.valid && amountRef.touched">
@@ -41,8 +41,8 @@
 
     <div class="group">
       <button class="submit-button" [disabled]="!f.valid">
-        {{(!contributionService.creating && !spendingService.creating) ? 'Submit' : ''}}
-        <div class="loader-container" *ngIf="contributionService.creating || spendingService.creating">
+        {{(!contributionService.creating && !expenseService.creating) ? 'Submit' : ''}}
+        <div class="loader-container" *ngIf="contributionService.creating || exenseService.creating">
           <ngx-pulse-loader color="#ffffff" class="item" size="10"></ngx-pulse-loader>
         </div>
       </button>
