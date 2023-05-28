@@ -21,7 +21,7 @@ export class UtilizationComponent implements OnInit {
   }
 
   getExpenses(){
-    this.expenseService.getExpenses().pipe(map((expense)=>{return expense.map((s)=>{return {name:s.item, y:s.price}})})).subscribe((spendings:[])=>{
+    this.expenseService.getExpenses().pipe(map((expense)=>{return expenses.map((s)=>{return {name:s.item, y:s.price}})})).subscribe((spendings:[])=>{
       this.expenses = this.groupByName(expenses, 'name');
       this.prepareChart();
       this.drawChart();
