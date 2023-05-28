@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContributionsComponent } from './contributions/contributions.component';
-import { SpendingsComponent } from './spendings/spendings.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 import { UtilizationComponent } from './utilization/utilization.component';
 
 const appRoutes: Routes = [
@@ -15,8 +15,8 @@ const appRoutes: Routes = [
     component: ContributionsComponent,
   },
   {
-    path: 'spendings',
-    component: SpendingsComponent,
+    path: 'expenses',
+    component: ExpensesComponent,
   },
   {
     path: 'utilization',
