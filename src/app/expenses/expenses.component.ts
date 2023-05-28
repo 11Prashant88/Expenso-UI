@@ -67,7 +67,7 @@ export class ExpensesComponent implements OnInit {
 
   addExpense(expense: Expense){
     this.expenseService.creating = true;
-    this.expenseService.addSpending(expense).subscribe((expense: Expense)=>{
+    this.expenseService.addExpense(expense).subscribe((expense: Expense)=>{
       this.expenses = [];
       this.allExpenses = [...this.allExpenses, expense];
       let expenses = this.allExpenses;
@@ -78,7 +78,7 @@ export class ExpensesComponent implements OnInit {
         this.expenses.push(obj)
       })
       this.refreshTotal();
-      this.closeAddSpendPopup();
+      this.closeAddExpensePopup();
       this.expenseService.creating = false;
       this.toastr.success(`expense added : ₹${expense.price}`, 'Success');
     }, (err)=>{
