@@ -1,4 +1,4 @@
-export interface Spending {
+export interface Expense {
   item: string;
   count: number;
   price: number;
