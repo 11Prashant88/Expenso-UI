@@ -13,7 +13,7 @@ export class ExpenseService{
 
     }
     getExpenses(){
-        return this.http.get<Expense[]>(`${environment.apiUrl}/expenses`).pipe(delay(3000));
+        return this.http.get<Expense[]>(`${environment.apiUrl}/expenses`);
     }
     addExpense(expense: Expense){
         return this.http.post<Expense>(`${environment.apiUrl}/expenses`, expense);
