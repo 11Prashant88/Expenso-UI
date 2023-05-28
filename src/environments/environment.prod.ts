@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://spendingo-app-api.onrender.com'
+  apiUrl: 'https://expenso-api.onrender.com'
 };
