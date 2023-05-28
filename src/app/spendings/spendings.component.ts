@@ -1,17 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Spending } from '../models/spending.model';
+import { Expense } from '../models/expense.model';
 import * as moment from 'moment';
 import { TopicEnum } from '../enums/topic.enum';
-import { SpendingService } from '../services/spending.service';
+import { ExpenseService } from '../services/expense.service';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash'
 
 @Component({
-  selector: 'app-spendings',
-  templateUrl: './spendings.component.html',
-  styleUrls: ['./spendings.component.scss'],
+  selector: 'app-expenses',
+  templateUrl: './expenses.component.html',
+  styleUrls: ['./expenses.component.scss'],
 })
-export class SpendingsComponent implements OnInit {
+export class ExpensesComponent implements OnInit {
   topic;
 
   public total: number;
@@ -19,18 +19,18 @@ export class SpendingsComponent implements OnInit {
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
 
-  constructor(private spendingService: SpendingService,
+  constructor(private expenseService: ExpenseService,
     private toastr: ToastrService) {
     this.topic = TopicEnum 
   }
-  isShowAddSpendPopup: boolean = false;
+  isShowAddExpensePopup: boolean = false;
 
-  spendings: {[key:string]:Spending[]}[] = [];
-  allSpendings: Spending[];
+  expenses: {[key:string]:Expense[]}[] = [];
+  allExpenses: Expense[];
 
   ngOnInit() {
     this.toastr.overlayContainer = this.toastContainer;
-    this.getSpendings();
+    this.getExpenses();
   }
 
   formatDate(date: Date) {
@@ -44,63 +44,63 @@ export class SpendingsComponent implements OnInit {
   formatDay(date: Date){
     return moment(date).format('D');
   }
-  showAddSpendPopup() {
-    this.isShowAddSpendPopup = true;
+  showAddExpensePopup() {
+    this.isShowAddExpensePopup = true;
   }
 
-  closeAddSpendPopup() {
-    this.isShowAddSpendPopup = false;
+  closeAddExpensePopup() {
+    this.isShowAddExpensePopup = false;
   }
 
-  getSpendings(){
-    this.spendingService.getSpendings().subscribe((spendings: Spending[])=>{
-      this.allSpendings = spendings;
-      spendings = _.groupBy(spendings, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
-      Object.keys(spendings).forEach((k)=>{
+  getExpenses(){
+    this.expenseService.getExpenses().subscribe((expenses: Expense[])=>{
+      this.allExpenses = expenses;
+      expenses = _.groupBy(expenses, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(expenses).forEach((k)=>{
         let obj = {}
-        obj[k] = spendings[k]
-        this.spendings.push(obj)
+        obj[k] = expenses[k]
+        this.expenses.push(obj)
       })
       this.refreshTotal();
     })
   }
 
-  addSpending(spending: Spending){
-    this.spendingService.creating = true;
-    this.spendingService.addSpending(spending).subscribe((spending: Spending)=>{
-      this.spendings = [];
-      this.allSpendings = [...this.allSpendings, spending];
-      let spendings = this.allSpendings;
-      spendings = _.groupBy(this.allSpendings, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
-      Object.keys(spendings).forEach((k)=>{
+  addExpense(expense: Expense){
+    this.expenseService.creating = true;
+    this.expenseService.addSpending(expense).subscribe((expense: Expense)=>{
+      this.expenses = [];
+      this.allExpenses = [...this.allExpenses, expense];
+      let expenses = this.allExpenses;
+      expenses = _.groupBy(this.allExpenses, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(expenses).forEach((k)=>{
         let obj = {}
-        obj[k] = spendings[k]
-        this.spendings.push(obj)
+        obj[k] = expenses[k]
+        this.expenses.push(obj)
       })
       this.refreshTotal();
       this.closeAddSpendPopup();
-      this.spendingService.creating = false;
-      this.toastr.success(`expense added : ₹${spending.count}`, 'Success');
+      this.expenseService.creating = false;
+      this.toastr.success(`expense added : ₹${expense.price}`, 'Success');
     }, (err)=>{
 
       this.toastr.error(err.error.error, 'Failed');
-      this.spendingService.creating = false;
+      this.expenseService.creating = false;
     })
   }
 
   refreshTotal(){
     this.total = 0;
-    this.spendings.forEach((spendingo)=>{
-      let monthlySpendings = spendingo[Object.keys(spendingo)[0]];
-      this.total = this.total + monthlySpendings.reduce((total, spending)=>{return total + spending.price}, 0)
+    this.expenses.forEach((expenso)=>{
+      let monthlyExpenses = expenso[Object.keys(expenso)[0]];
+      this.total = this.total + monthlyExpenses.reduce((total, expense)=>{return total + expense.price}, 0)
     })
   }
 
-  monthlySpendings(spendingo:{[s: string]:Spending}){
-    return spendingo[Object.keys(spendingo)[0]]
+  monthlyExpenses(expenso:{[s: string]:Expense}){
+    return expenso[Object.keys(expenso)[0]]
   }
 
-  getMonthHeader(spendingo:{[s: string]:Spending[]}){
-    return Object.keys(spendingo)[0];
+  getMonthHeader(expenso:{[s: string]:Expense[]}){
+    return Object.keys(expenso)[0];
   }
 }
