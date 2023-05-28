@@ -42,7 +42,7 @@
     <div class="group">
       <button class="submit-button" [disabled]="!f.valid">
         {{(!contributionService.creating && !expenseService.creating) ? 'Submit' : ''}}
-        <div class="loader-container" *ngIf="contributionService.creating || exenseService.creating">
+        <div class="loader-container" *ngIf="contributionService.creating || expenseService.creating">
           <ngx-pulse-loader color="#ffffff" class="item" size="10"></ngx-pulse-loader>
         </div>
       </button>
