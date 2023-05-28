@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ContributionsComponent } from './contributions/contributions.component';
-import { SpendingsComponent } from './spendings/spendings.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 import { HeaderComponent } from './header/header.component';
 import { UtilizationComponent } from './utilization/utilization.component';
 import { AddPopupComponent } from './add-popup/add-popup.component';
@@ -24,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     HelloComponent,
     ContributionsComponent,
-    SpendingsComponent,
+    ExpensesComponent,
     UtilizationComponent,
     HeaderComponent,
     AddPopupComponent
