@@ -1,5 +1,5 @@
 <div class="add-contribution-totalcontainer">
-  <button class="add-contribution" (click)="showAddContributionSpendPopup()">Add Contribution</button>
+  <button class="add-contribution" (click)="showAddContributionSpendPopup()" *ngIf="isAuthenticated">Add Contribution</button>
   <div class="total">
     <!-- <span class="total-label">Total :</span> -->
     <span class="total-value">{{total | currency:"₹"}}</span>

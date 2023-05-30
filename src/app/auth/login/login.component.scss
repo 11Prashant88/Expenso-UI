@@ -1,0 +1,60 @@
+.form-container{
+    position: absolute;
+    top: 50% !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    top: 0;
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        .field-container{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+    
+            .lbl{
+                color: #ff8298;
+            }
+    
+            .txt-box{
+                height: 40px;
+                padding: 10px;
+                border: 1px solid #ff8298;
+                border-radius: 5px;
+    
+                &:focus {
+                    outline: none;
+                    box-shadow: 0px 0px 4px 2px pink;;
+                  }
+            }
+        }
+
+        .login-btn{
+            background: var(--app-button-bg);
+            padding: 0px 10px;
+            height: 40px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+
+    .close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: gray;
+        font-size: 20px;
+        padding: 0px 10px;
+        cursor: pointer;
+    }
+}

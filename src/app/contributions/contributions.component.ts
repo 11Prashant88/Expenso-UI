@@ -5,6 +5,7 @@ import { Contribution } from '../models/contribution.model';
 import { ContributionService } from '../services/contribution.service';
 import * as moment from 'moment';
 import * as _ from 'lodash'
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-contributions',
@@ -21,7 +22,8 @@ export class ContributionsComponent implements OnInit {
   toastContainer: ToastContainerDirective;
 
   constructor(private contributionsService: ContributionService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private authService: AuthService) {
     this.topic = TopicEnum
   }
 
@@ -29,8 +31,15 @@ export class ContributionsComponent implements OnInit {
   allContributions: Contribution[] = [];
 
   isShowContributinSpendPopup: boolean = false;
+  public isAuthenticated: boolean = false;
 
   ngOnInit() {
+    this.isAuthenticated = this.authService.isAuthenticated;
+    this.authService.getIsAuth().subscribe((isAuthenticated)=>{
+      if(isAuthenticated){
+        this.isAuthenticated = true;
+      }
+    })
     this.toastr.overlayContainer = this.toastContainer;
     this.getContributions();
   }

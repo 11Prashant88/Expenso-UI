@@ -16,6 +16,8 @@ export class AddPopupComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
   @Output() add = new EventEmitter<Contribution>();
   @ViewChild('f') f: NgForm;
+
+  public isAuthenticated: boolean = false;
   constructor(public contributionService: ContributionService, public expenseService: ExpenseService) {
     this.topicEnum = TopicEnum;
   }

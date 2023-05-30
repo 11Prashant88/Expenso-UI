@@ -1,0 +1,17 @@
+<div class="settings-container">
+    <div class="dark-mode-container">
+        <p>Dar Mode</p>
+        <input type="checkbox">
+    </div>
+    <div class="login-container" (click)="openLoginPopup()" *ngIf="!isAuthenticated">
+        <p>Login</p>
+        <span class="menu-item-icon"><i class="fa-solid fa-right-to-bracket login-icon"></i></span>
+    </div>
+    <div class="logout-container" (click)="logout()" *ngIf="isAuthenticated">
+        <p>Logout</p>
+        <span class="menu-item-icon"><i class="fa-solid fa-power-off logout-icon"></i></span>
+    </div>
+</div>
+
+<app-login *ngIf="showLoginPopup" (close)="closeLoginPopup()"></app-login>
+

@@ -1,0 +1,16 @@
+<div class="form-container">
+    <form (ngSubmit)="onLogin()" #f="ngForm">
+        <div class="field-container">
+            <label for="" class="lbl">Username</label>
+            <input name="username" ngModel #usernameRef="ngModel" type="text" class="txt-box">
+        </div>
+        <div class="field-container">
+            <label for="" class="lbl">Password</label>
+            <input name="password" ngModel #passwordRef="ngModel" type="text" class="txt-box">
+        </div>
+        <button class="login-btn">Login</button>
+    </form>
+    <span class="close" (click)="closePopup()"
+    ><i class="fa-solid fa-xmark"></i
+  ></span>
+</div>

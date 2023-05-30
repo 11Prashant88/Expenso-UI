@@ -5,6 +5,7 @@ import { TopicEnum } from '../enums/topic.enum';
 import { ExpenseService } from '../services/expense.service';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash'
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-expenses',
@@ -21,8 +22,11 @@ export class ExpensesComponent implements OnInit {
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
 
+  public isAuthenticated: boolean = false;
+
   constructor(private expenseService: ExpenseService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private authService: AuthService) {
     this.topic = TopicEnum 
   }
   isShowAddExpensePopup: boolean = false;
@@ -31,6 +35,12 @@ export class ExpensesComponent implements OnInit {
   allExpenses: Expense[] = [];
 
   ngOnInit() {
+    this.isAuthenticated = this.authService.isAuthenticated;
+    this.authService.getIsAuth().subscribe((isAuthenticated)=>{
+      if(isAuthenticated){
+        this.isAuthenticated = true;
+      }
+    })
     this.toastr.overlayContainer = this.toastContainer;
     this.getExpenses();
   }

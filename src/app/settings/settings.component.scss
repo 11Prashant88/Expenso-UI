@@ -1,0 +1,30 @@
+.settings-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+
+    .login-container, .logout-container, .dark-mode-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .login-container, .logout-container{
+        padding: 10px;
+        background-color: #ececec;
+        border-radius: 10%;
+
+        .login-icon{
+            color: #5182b1;
+        }
+
+        .logout-icon{
+            color: #e0425e
+        }
+    }
+}

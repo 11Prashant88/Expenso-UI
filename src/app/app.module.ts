@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnersModule } from 'ngx-spinners'
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './auth/login/login.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule,
@@ -27,7 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ExpensesComponent,
     UtilizationComponent,
     HeaderComponent,
-    AddPopupComponent
+    AddPopupComponent,
+    LoginComponent,
+    SettingsComponent
   ],
   bootstrap: [AppComponent],
 })
