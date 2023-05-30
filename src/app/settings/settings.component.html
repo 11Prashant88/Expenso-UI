@@ -1,7 +1,10 @@
 <div class="settings-container">
     <div class="dark-mode-container">
         <p>Dar Mode</p>
-        <input type="checkbox">
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
     </div>
     <div class="login-container" (click)="openLoginPopup()" *ngIf="!isAuthenticated">
         <p>Login</p>
