@@ -12,7 +12,7 @@
 .add-expense-popup {
   min-height: 400px;
   width: 100vw;
-  background-color: white;
+  background-color: var(--app-popup-bg-color);
   position: absolute;
   // bottom: -400px;
   left: 0;
@@ -31,7 +31,7 @@
     margin-top: 10px;
 
     .label {
-      color: #ff8298;
+      color: var(--app-popup-lbl-color);
     }
 
     .item-dropdown,
