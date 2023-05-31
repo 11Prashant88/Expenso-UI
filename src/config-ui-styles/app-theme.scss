@@ -23,6 +23,10 @@ body[application-theme='app-light'] {
   --app-scrollbar-width: 4px;
   --app-scrollbar-track-color: pink;
   --app-scrollbar-thumb-color: #ff8298;
+  
+  //popup
+  --app-popup-bg-color: #ffffff;
+  --app-popup-lbl-color: #ff8298;
 
   //dark mode toggle
   --app--darkmode-bg: #000000;
@@ -68,6 +72,11 @@ body[application-theme='app-dark'] {
   --app-scrollbar-width: 4px;
   --app-scrollbar-track-color: gray;
   --app-scrollbar-thumb-color: #ffffff;
+  
+  //popup
+  --app-popup-bg-color: #000000;
+  --app-popup-lbl-color: #ffffff;
+
 
   //dark mode toggle
   --app--darkmode-bg: #2c69da;
