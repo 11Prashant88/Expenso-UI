@@ -1,8 +1,8 @@
 <div class="settings-container">
     <div class="dark-mode-container">
-        <p>Dar Mode</p>
+        <p class="dark-mode-txt">Dar Mode</p>
         <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" [(ngModel)]="isChecked" (change)="modeChange(isChecked ? 'on' : 'off')">
             <span class="slider round"></span>
           </label>
     </div>

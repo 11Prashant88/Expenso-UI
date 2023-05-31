@@ -5,15 +5,18 @@
 }
 
 .navbar {
-  background-color: var(--app-menu-item-text-color);
+  background-color: var(--app-menu-bg);
+  height: 50px;
   .menu {
     display: flex;
     flex-direction: row;
     justify-self: flex-start;
     align-items: center;
+    height: 100%;
     .menu-item {
+      height: 100%;
       list-style-type: none;
-      background-color: #ffffffed;
+      // background-color: var(--app-bg-color);
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -25,6 +28,7 @@
       .menu-item-text,
       .menu-item-icon {
         color: #b3b3b3;
+        font-size: 18px;
       }
     }
   }

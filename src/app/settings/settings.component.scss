@@ -15,6 +15,9 @@
     }
 
     .dark-mode-container{
+      .dark-mode-txt{
+        color: var(--app-common-txt-color);
+      }
         .switch {
             position: relative;
             display: inline-block;
@@ -53,11 +56,11 @@
           }
           
           input:checked + .slider {
-            background-color: black;
+            background-color: var(--app--darkmode-bg);
           }
           
           input:focus + .slider {
-            box-shadow: 0 0 1px black;
+            box-shadow: 0 0 1px var(--app--darkmode-bg);
           }
           
           input:checked + .slider:before {

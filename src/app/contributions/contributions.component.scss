@@ -46,7 +46,7 @@
     }
 
     .total{
-      color: gray;
+      color: var(--app-total-txt);
       margin-left: auto;
       .total-value{
         font-size: 24px;
@@ -55,7 +55,7 @@
   }
 
 .contribution-list {
-  height: calc(100vh - 110px);
+  height: calc(100vh - 101px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -63,11 +63,16 @@
   padding-right: 10px;
   overflow-y: scroll;
   margin-top: 10px;
+  padding-bottom: 10px;
 
   .contribution-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    .month-header{
+      color: var(--app-month-header);
+    }
 
     .contribution {
       display: flex;
@@ -98,13 +103,13 @@
             text-align: center;
         }
         .contributor-name {
-          color: black;
+          color: var(--app-tile-txt-color);
           // font-weight: bold;
         }
-    
-        .contributed-amount {
-          color: #ff8298;
-        }
+      }
+
+      .contributed-amount {
+        color: var(--app-tile-txt-color);
       }
     }
   }

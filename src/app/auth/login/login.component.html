@@ -8,9 +8,12 @@
             <label for="" class="lbl">Password</label>
             <input name="password" ngModel #passwordRef="ngModel" type="text" class="txt-box">
         </div>
-        <button class="login-btn">Login</button>
+        <button class="login-btn">
+            {{authService.loggingIn ? '' : 'Login'}}
+            <div class="loader-container" *ngIf="authService.loggingIn">
+                <ngx-pulse-loader color="#ffffff" class="item" size="10"></ngx-pulse-loader>
+            </div>
+        </button>
     </form>
-    <span class="close" (click)="closePopup()"
-    ><i class="fa-solid fa-xmark"></i
-  ></span>
+    <span class="close" (click)="closePopup()"><i class="fa-solid fa-xmark"></i></span>
 </div>

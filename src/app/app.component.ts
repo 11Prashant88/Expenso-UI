@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   name = 'Angular';
   constructor() {
-    document.body.setAttribute('application-theme', 'app-light');
+    if (!localStorage.getItem('application-theme')) {
+      document.body.setAttribute('application-theme', 'app-light');
+      localStorage.setItem('application-theme', 'app-light');
+    } else{
+      document.body.setAttribute('application-theme', localStorage.getItem('application-theme'));
+    }
   }
 }

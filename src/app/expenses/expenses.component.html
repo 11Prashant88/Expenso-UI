@@ -6,7 +6,7 @@
 </div>
 <div class="expense-list" *ngIf="!loadingExpenses; else loader">
   <div class="expense-container" *ngFor="let expenso of expenses">
-    <p>{{getMonthHeader(expenso)}}</p>
+    <p class="month-header">{{getMonthHeader(expenso)}}</p>
     <div class="expense" *ngFor="let expense of monthlyExpenses(expenso)">
       <div class="date-item-container">
         <p class="expense-date">

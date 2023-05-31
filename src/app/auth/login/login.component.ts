@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   @ViewChild('f') loginForm: NgForm;
   public isAuthenticated: boolean = false;
   @Output() close = new EventEmitter<void>();
-  constructor(private authService: AuthService) { }
+  loggingIn: boolean = false;
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated;

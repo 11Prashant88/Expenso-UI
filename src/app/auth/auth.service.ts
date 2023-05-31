@@ -12,16 +12,21 @@ export class AuthService{
     public token: string;
     isAuthenticated: boolean = false;
     isAuthenticatedSubject = new Subject<boolean>();
+    loggingIn: boolean = false;
     constructor(private http: HttpClient, private router: Router){
 
     }
     login(creds:{email: string, password: string}){
+        this.loggingIn = true;
         this.http.post(`${environment.apiUrl}/users/login`, creds).subscribe((response)=>{
             this.token = response['token'];
             this.isAuthenticated = true;
             localStorage.setItem('token', this.token);
             this.isAuthenticatedSubject.next(true);
             this.router.navigate(['/'])
+            this.loggingIn = false;
+          }, ()=>{
+            this.loggingIn = false;
           })
     }
 

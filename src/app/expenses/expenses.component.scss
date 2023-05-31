@@ -55,15 +55,20 @@
 }
 
 .expense-list {
-  height: calc(100vh - 110px);
+  height: calc(100vh - 101px);
   overflow-y: scroll;
   margin-top: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
 
   .expense-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    .month-header{
+      color: var(--app-month-header);
+    }
     .expense {
       display: flex;
       flex-direction: row;
@@ -85,7 +90,7 @@
           
   
           .item-name{
-            color: black;
+            color: var(--app-tile-txt-color);
             // font-weight: bold;
           }
           .item-count {
@@ -116,7 +121,7 @@
       }
   
       .expense-amount {
-        color: black;
+          color: var(--app-tile-txt-color);
         // font-weight: bold;
       }
     }

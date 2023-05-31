@@ -3,11 +3,16 @@ body[application-theme='app-light'] {
   --app-bg-color: #cecece2e;
 
   //menu
+  --app-menu-bg: #f0f0f0;
   --app-menu-item-text-color: gray;
   --app-menu-item-active-text-color: #ff8298;
 
   //tile
   --app-tile-bg-color: #ffffff;
+  --app-title-txt-color : #ff8298;
+
+  --app-month-header: #000000;
+  --app-total-txt-color: gray;
 
   // button
   --app-button-bg: linear-gradient(45deg, #b337b6, #ff7c7c);
@@ -17,4 +22,51 @@ body[application-theme='app-light'] {
   --app-scrollbar-width: 4px;
   --app-scrollbar-track-color: pink;
   --app-scrollbar-thumb-color: #ff8298;
+
+  //dark mode toggle
+  --app--darkmode-bg: #000000;
+
+  //login screen
+  --app-login-bg: #ffffff;
+  --app-login-lbl-color: #ff8298;
+
+  //common
+  --app-common-txt-color: #000000;
+}
+
+body[application-theme='app-dark'] {
+  //app
+  --app-bg-color: black;
+
+  //menu
+  --app-menu-bg: #424242;
+  --app-menu-item-text-color: gray;
+  --app-menu-item-active-text-color: #02c7c7;
+
+  //tile
+  --app-tile-bg-color: #f6f6f640;
+  --app-tile-txt-color: #eeeeee;
+
+  --app-month-header: #a8d5e1;
+
+  --app-total-txt: #ffffff;
+
+  // button
+  --app-button-bg: linear-gradient(45deg, #b337b6, #ff7c7c);
+  --app-button-box-shadow: #f77a9099 0px 0px 10px 2px;
+
+  //scrollbar
+  --app-scrollbar-width: 4px;
+  --app-scrollbar-track-color: gray;
+  --app-scrollbar-thumb-color: #ffffff;
+
+  //dark mode toggle
+  --app--darkmode-bg: #2c69da;
+
+  //login screen
+  --app-login-bg: black;
+  --app-login-lbl-color: #ffffff;
+
+  //common
+  --app-common-txt-color: #ffffff;
 }

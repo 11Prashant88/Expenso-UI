@@ -10,6 +10,7 @@ export class SettingsComponent implements OnInit {
 
   showLoginPopup: boolean = false;
   public isAuthenticated: boolean = false;
+  isChecked: boolean = false;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,12 @@ export class SettingsComponent implements OnInit {
         this.isAuthenticated = true;
       }
     })
+
+    if(localStorage.getItem('application-theme') === 'app-light'){
+      this.isChecked = false;
+    } else{
+      this.isChecked = true;
+    }
   }
 
   openLoginPopup(){
@@ -31,6 +38,20 @@ export class SettingsComponent implements OnInit {
 
   logout(){
     this.authService.logout()
+  }
+  modeChange(event: string){
+    switch(event){
+      case 'on':
+        document.body.setAttribute('application-theme', 'app-dark');
+        localStorage.setItem('application-theme', 'app-dark');
+        break;
+      case 'off':
+        document.body.setAttribute('application-theme', 'app-light');
+        localStorage.setItem('application-theme', 'app-light');
+        break;
+      default:
+        break;
+    }
   }
 
 }
