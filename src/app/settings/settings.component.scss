@@ -4,7 +4,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 20px;
-    gap: 20px;
+    gap: 10px;
 
     .login-container, .logout-container, .dark-mode-container{
         display: flex;
@@ -77,6 +77,12 @@
           .slider.round:before {
             border-radius: 50%;
           }
+    }
+
+    .divider{
+      height: 1px;
+      background-color: gray;
+      width: 100%;
     }
 
     .login-container, .logout-container{

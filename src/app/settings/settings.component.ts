@@ -9,6 +9,7 @@ import { AuthService } from '../auth/auth.service';
 export class SettingsComponent implements OnInit {
 
   showLoginPopup: boolean = false;
+  showLogoutPopup: boolean = false;
   public isAuthenticated: boolean = false;
   isChecked: boolean = false;
   constructor(private authService: AuthService) { }
@@ -32,8 +33,16 @@ export class SettingsComponent implements OnInit {
     this.showLoginPopup = true;
   }
 
+  openLogoutPopup(){
+    this.showLogoutPopup = true;
+  }
+
   closeLoginPopup(){
     this.showLoginPopup = false;
+  }
+
+  closeLogoutPopup(){
+    this.showLogoutPopup = false;
   }
 
   logout(){

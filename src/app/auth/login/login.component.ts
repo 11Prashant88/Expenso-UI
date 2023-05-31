@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { CustomError } from 'src/app/models/error.model';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
   public isAuthenticated: boolean = false;
   @Output() close = new EventEmitter<void>();
   loggingIn: boolean = false;
+  error: CustomError;
+  showError: boolean = false;
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
@@ -22,6 +25,10 @@ export class LoginComponent implements OnInit {
       if(isAuthenticated){
         this.isAuthenticated = true;
       }
+    })
+    this.authService.loginError$.subscribe((error: CustomError)=>{
+      this.error = error;
+      this.showError = true;
     })
   }
 
@@ -37,6 +44,10 @@ export class LoginComponent implements OnInit {
 
   closePopup(){
     this.close.emit();
+  }
+
+  closeErrorPopup(){
+    this.showError = false;
   }
 
 }

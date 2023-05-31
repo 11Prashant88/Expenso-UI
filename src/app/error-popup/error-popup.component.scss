@@ -1,0 +1,57 @@
+.backdrop {
+    position: absolute;
+    top: 50% !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+    background-color: #000000a3;
+}
+
+.error-container {
+    position: absolute;
+    top: 50% !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    top: 0;
+    background-color: #ffffff;
+
+    .message-title-container {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .message-title{
+            font-weight: bold;
+        }
+    }
+
+    .message-body {
+        min-height: 100px;
+        // display: flex;
+        // justify-content: space-evenly;
+        // align-items: center;
+        // flex-direction: column;
+
+        .message {
+            text-align: center;
+        }
+
+        .ok-btn {
+            height: 40px;
+            width: 100px;
+            padding: 10px;
+            color: white;
+            background-color: #fc2f52f2;
+            border: none;
+            border: 10px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}

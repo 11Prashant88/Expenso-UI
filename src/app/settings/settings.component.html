@@ -6,15 +6,17 @@
             <span class="slider round"></span>
           </label>
     </div>
+    <div class="divider"></div>
     <div class="login-container" (click)="openLoginPopup()" *ngIf="!isAuthenticated">
         <p>Login</p>
         <span class="menu-item-icon"><i class="fa-solid fa-right-to-bracket login-icon"></i></span>
     </div>
-    <div class="logout-container" (click)="logout()" *ngIf="isAuthenticated">
+    <div class="logout-container" (click)="openLogoutPopup()" *ngIf="isAuthenticated">
         <p>Logout</p>
         <span class="menu-item-icon"><i class="fa-solid fa-power-off logout-icon"></i></span>
     </div>
 </div>
 
 <app-login *ngIf="showLoginPopup" (close)="closeLoginPopup()"></app-login>
+<app-logout *ngIf="showLogoutPopup" (logout)="logout()" (cancel)="closeLogoutPopup()"></app-logout>
 

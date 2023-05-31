@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { delay } from "rxjs/operators";
 import { environment } from "src/environments/environment";
+import { CustomError } from "../models/error.model";
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,7 @@ export class AuthService{
     isAuthenticated: boolean = false;
     isAuthenticatedSubject = new Subject<boolean>();
     loggingIn: boolean = false;
+    loginError$ = new Subject<CustomError>();
     constructor(private http: HttpClient, private router: Router){
 
     }
@@ -25,7 +27,8 @@ export class AuthService{
             this.isAuthenticatedSubject.next(true);
             this.router.navigate(['/'])
             this.loggingIn = false;
-          }, ()=>{
+          }, (e)=>{
+            this.loginError$.next({messageTitle:'Login', message: e?.error?.error})
             this.loggingIn = false;
           })
     }

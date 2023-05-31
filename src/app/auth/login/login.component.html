@@ -17,3 +17,5 @@
     </form>
     <span class="close" (click)="closePopup()"><i class="fa-solid fa-xmark"></i></span>
 </div>
+
+<app-error-popup *ngIf="showError" [error]="error" (close)="closeErrorPopup()"></app-error-popup>
