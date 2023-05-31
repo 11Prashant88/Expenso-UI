@@ -13,7 +13,7 @@ export class ContributionService{
 
     }
     getContributions(){
-        return this.http.get<Contribution[]>(`${environment.apiUrl}/contributions`).pipe(delay(4000000));
+        return this.http.get<Contribution[]>(`${environment.apiUrl}/contributions`);
     }
     addContribution(contribution: Contribution){
         return this.http.post<Contribution>(`${environment.apiUrl}/contributions`, contribution);
