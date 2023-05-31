@@ -6,6 +6,7 @@ body[application-theme='app-light'] {
   --app-menu-bg: #f0f0f0;
   --app-menu-item-text-color: gray;
   --app-menu-item-active-text-color: #ff8298;
+  --app-menu-height: 50px;
 
   //tile
   --app-tile-bg-color: #ffffff;
@@ -42,6 +43,7 @@ body[application-theme='app-dark'] {
   --app-menu-bg: #424242;
   --app-menu-item-text-color: gray;
   --app-menu-item-active-text-color: #02c7c7;
+  --app-menu-height: 50px;
 
   //tile
   --app-tile-bg-color: #f6f6f640;

@@ -104,6 +104,14 @@ export class ExpensesComponent implements OnInit {
     })
   }
 
+  get loaderColor(): string{
+    if(localStorage.getItem('application-theme') === 'app-light'){
+      return 'pink';
+    } else {
+      return '#02c7c7'
+    }
+  }
+
   refreshTotal(){
     this.total = 0;
     this.expenses.forEach((expenso)=>{

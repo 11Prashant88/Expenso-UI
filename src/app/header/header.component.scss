@@ -6,7 +6,7 @@
 
 .navbar {
   background-color: var(--app-menu-bg);
-  height: 50px;
+  height: var(--app-menu-height);
   .menu {
     display: flex;
     flex-direction: row;

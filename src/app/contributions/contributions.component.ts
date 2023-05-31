@@ -60,6 +60,14 @@ export class ContributionsComponent implements OnInit {
     return moment(date).format('D');
   }
 
+  get loaderColor(): string{
+    if(localStorage.getItem('application-theme') === 'app-light'){
+      return 'pink';
+    } else {
+      return '#02c7c7'
+    }
+  }
+
   getContributions(){
     this.loadingContributions = true;
     this.contributionsService.getContributions().subscribe((contributions: Contribution[])=>{
