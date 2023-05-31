@@ -1,4 +1,4 @@
 export interface CustomError{
-    messageTitle: string;
+    type: string;
     message: string
 }

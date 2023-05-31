@@ -28,7 +28,7 @@ export class AuthService{
             this.router.navigate(['/'])
             this.loggingIn = false;
           }, (e)=>{
-            this.loginError$.next({messageTitle:'Login', message: e?.error?.error})
+            this.loginError$.next({type: e?.error?.error?.type, message: e?.error?.error?.message})
             this.loggingIn = false;
           })
     }
