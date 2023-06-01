@@ -36,9 +36,7 @@ export class ContributionsComponent implements OnInit {
   ngOnInit() {
     this.isAuthenticated = this.authService.isAuthenticated;
     this.authService.getIsAuth().subscribe((isAuthenticated)=>{
-      if(isAuthenticated){
-        this.isAuthenticated = true;
-      }
+      this.isAuthenticated = isAuthenticated;
     })
     this.toastr.overlayContainer = this.toastContainer;
     this.getContributions();

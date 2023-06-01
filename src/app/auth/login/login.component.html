@@ -2,13 +2,19 @@
     <form (ngSubmit)="onLogin()" #f="ngForm">
         <div class="field-container">
             <label for="" class="lbl">Username</label>
-            <input name="username" ngModel #usernameRef="ngModel" type="text" class="txt-box">
+            <input name="username" required ngModel #usernameRef="ngModel" type="text" class="txt-box">
+            <span class="err" *ngIf="!usernameRef.valid && usernameRef.touched">
+                <span *ngIf="usernameRef?.errors?.required">Please enter username</span>
+            </span>
         </div>
         <div class="field-container">
             <label for="" class="lbl">Password</label>
-            <input name="password" ngModel #passwordRef="ngModel" type="text" class="txt-box">
+            <input name="password" required ngModel #passwordRef="ngModel" type="text" class="txt-box">
+            <span class="err" *ngIf="!passwordRef.valid && passwordRef.touched">
+                <span *ngIf="passwordRef?.errors?.required">Please enter password</span>
+            </span>
         </div>
-        <button class="login-btn">
+        <button [disabled]="!f.valid" class="login-btn">
             {{authService.loggingIn ? '' : 'Login'}}
             <div class="loader-container" *ngIf="authService.loggingIn">
                 <ngx-pulse-loader color="#ffffff" class="item" size="10"></ngx-pulse-loader>

@@ -99,7 +99,7 @@
   
         .contributed-date{
           font-size: 12px;
-            color: #adadad;
+            color: var(--app-tile-date-color);
             display: flex;
             flex-direction: column;
             text-align: center;

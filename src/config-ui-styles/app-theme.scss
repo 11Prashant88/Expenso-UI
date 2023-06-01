@@ -9,6 +9,8 @@ body[application-theme='app-light'] {
   --app-menu-height: 50px;
 
   //tile
+  --app-tile-count-color: #949494;
+  --app-tile-date-color: #adadad;
   --app-tile-bg-color: #ffffff;
   --app-tile-txt-color : #646464;
 
@@ -36,10 +38,13 @@ body[application-theme='app-light'] {
   --app-cancel-btn-txt-color: #000000;
   --app-cancel-btn-bg-color: gray;
   --app-logout-btn-txt-color: #ffffff;
-  --app-logout-btn-bg-color: linear-gradient(45deg, #b337b6, #ff7c7c);
 
   //common
+  --app-common-lbl-color: #ff8298;
   --app-common-txt-color: #000000;
+  --app-common-txt-box-border: 1px solid #ff8298;
+  --app-common-txt-box-shadow: 0px 0px 4px 2px pink;
+  --app-common-form-bg-color: #ffffff;
 }
 
 body[application-theme='app-dark'] {
@@ -49,19 +54,21 @@ body[application-theme='app-dark'] {
   //menu
   --app-menu-bg: #424242;
   --app-menu-item-text-color: gray;
-  --app-menu-item-active-text-color: #02c7c7;
+  --app-menu-item-active-text-color: #5d9ff0;
   --app-menu-height: 50px;
 
   //tile
+  --app-tile-count-color: #97bbe8b0;
+  --app-tile-date-color: #97bbe8b0;
   --app-tile-bg-color: #ffffff26;
-  --app-tile-txt-color: #eeeeee;
+  --app-tile-txt-color: #5d9ff0;
 
   --app-month-header: #a8d5e1;
 
   --app-total-txt-color: #ffffff;
 
   // button
-  --app-button-bg: linear-gradient(45deg, #b337b6, #ff7c7c);
+  --app-button-bg: linear-gradient(to right, #2d7ea5 0%, #406298 51% 100%);
   --app-button-box-shadow: #f77a9099 0px 0px 10px 2px;
 
   //scrollbar
@@ -81,8 +88,12 @@ body[application-theme='app-dark'] {
   --app-cancel-btn-txt-color: #ffffff;
   --app-cancel-btn-bg-color: gray;
   --app-logout-btn-txt-color: #ffffff;
-  --app-logout-btn-bg-color: linear-gradient(45deg, #b337b6, #ff7c7c);
 
   //common
+  --app-common-lbl-color: #ffffff;
   --app-common-txt-color: #ffffff;
+  --app-common-txt-box-border: 1px solid #7aeaf6;
+  --app-common-txt-box-shadow: none;
+  --app-common-form-bg-color: #000000;
 }
+

@@ -96,7 +96,7 @@
             // font-weight: bold;
           }
           .item-count {
-            color: #949494;
+            color: var(--app-tile-count-color);
           }
         }
   
@@ -108,7 +108,7 @@
     
         .expense-date {
           font-size: 12px;
-          color: #adadad;
+          color: var(--app-tile-date-color);
           display: flex;
           flex-direction: column;
           text-align: center;
