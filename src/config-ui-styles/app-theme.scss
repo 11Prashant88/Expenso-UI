@@ -39,7 +39,7 @@ body[application-theme='app-light'] {
 
   //logout screen
   --app-logout-question-txt-color : '#000000';
-  --app-cancel-btn-txt-color: #000000;
+  --app-cancel-btn-txt-color: #ffffff;
   --app-cancel-btn-bg-color: gray;
   --app-logout-btn-txt-color: #ffffff;
 
@@ -48,7 +48,6 @@ body[application-theme='app-light'] {
   --app-common-txt-color: #000000;
   --app-common-txt-box-border: 1px solid #ff8298;
   --app-common-txt-box-shadow: 0px 0px 4px 2px pink;
-  --app-common-form-bg-color: #ffffff;
 }
 
 body[application-theme='app-dark'] {
@@ -103,6 +102,5 @@ body[application-theme='app-dark'] {
   --app-common-txt-color: #ffffff;
   --app-common-txt-box-border: 1px solid #7aeaf6;
   --app-common-txt-box-shadow: none;
-  --app-common-form-bg-color: #000000;
 }
 

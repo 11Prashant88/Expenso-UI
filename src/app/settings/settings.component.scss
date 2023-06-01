@@ -15,8 +15,16 @@
     }
 
     .dark-mode-container{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #ececec;
+      border-radius: 10px;
       .dark-mode-txt{
-        color: var(--app-common-txt-color);
+        color: #000000;
       }
         .switch {
             position: relative;
@@ -88,7 +96,12 @@
     .login-container, .logout-container{
         padding: 10px;
         background-color: #ececec;
-        border-radius: 10%;
+        border-radius: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
 
         .login-icon{
             color: #5182b1;
