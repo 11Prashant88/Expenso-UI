@@ -48,7 +48,7 @@
   }
 
   .total{
-    color: gray;
+    color: var(--app-total-txt-color);
     margin-left: auto;
     .total-value{
       font-size: 24px;
