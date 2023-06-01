@@ -16,7 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './auth/login/login.component';
 import { SettingsComponent } from './settings/settings.component';
-import { LogoutComponent } from './auth/logout/logout.component';
+import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 import { ErrorPopupComponent } from './error-popup/error-popup.component';
 
 @NgModule({
@@ -34,7 +34,7 @@ import { ErrorPopupComponent } from './error-popup/error-popup.component';
     AddPopupComponent,
     LoginComponent,
     SettingsComponent,
-    LogoutComponent,
+    ConfirmationPopupComponent,
     ErrorPopupComponent
   ],
   bootstrap: [AppComponent],

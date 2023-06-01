@@ -18,4 +18,8 @@ export class ExpenseService{
     addExpense(expense: Expense){
         return this.http.post<Expense>(`${environment.apiUrl}/expenses`, expense);
     }
+
+    clearExpenses(){
+        return this.http.delete(`${environment.apiUrl}/expenses`);
+    }
 }

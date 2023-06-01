@@ -2,10 +2,10 @@
 
 </div>
 <div class="logout-container">
-    <p class="logout-question">Are you logging out?</p>
+    <p class="logout-question">{{message}}</p>
     <div class="cancel-logout-btn-container">
         <button class="cancel-btn" (click)="onCancel()">Cancel</button>
-        <button class="logout-btn" (click)="onlogout()">Logout</button>
+        <button class="logout-btn" (click)="onSubmit(type)">{{buttonText}}</button>
     </div>
     <span class="close" (click)="onCancel()"><i class="fa-solid fa-xmark"></i></span>
 </div>

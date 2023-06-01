@@ -18,4 +18,7 @@ export class ContributionService{
     addContribution(contribution: Contribution){
         return this.http.post<Contribution>(`${environment.apiUrl}/contributions`, contribution);
     }
+    clearContributions(){
+        return this.http.delete(`${environment.apiUrl}/contributions`);
+    }
 }

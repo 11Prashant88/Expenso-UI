@@ -48,6 +48,11 @@ body[application-theme='app-light'] {
   --app-common-txt-color: #000000;
   --app-common-txt-box-border: 1px solid #ff8298;
   --app-common-txt-box-shadow: 0px 0px 4px 2px pink;
+
+  //settings
+  --app-settings-option-bg-color: #ececec;
+  --app-settings-option-txt-color: #636363;
+  --app-settings-option-divider-bg-color: #d8d8d8;
 }
 
 body[application-theme='app-dark'] {
@@ -102,5 +107,10 @@ body[application-theme='app-dark'] {
   --app-common-txt-color: #ffffff;
   --app-common-txt-box-border: 1px solid #7aeaf6;
   --app-common-txt-box-shadow: none;
+
+  //settings
+  --app-settings-option-bg-color: #f2f2f24a;
+  --app-settings-option-txt-color: #ffffff;
+  --app-settings-option-divider-bg-color: #3c3c3c;
 }
 

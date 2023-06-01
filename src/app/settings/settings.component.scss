@@ -1,3 +1,7 @@
+.lbl{
+  color: var(--app-settings-option-txt-color);
+}
+
 .settings-container{
     display: flex;
     flex-direction: column;
@@ -21,11 +25,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px;
-      background-color: #ececec;
+      background-color: var(--app-settings-option-bg-color);
       border-radius: 10px;
-      .dark-mode-txt{
-        color: #000000;
-      }
         .switch {
             position: relative;
             display: inline-block;
@@ -89,13 +90,13 @@
 
     .divider{
       height: 1px;
-      background-color: gray;
+      background-color: var(--app-settings-option-divider-bg-color);
       width: 100%;
     }
 
-    .login-container, .logout-container{
+    .login-container, .logout-container, .clear-contributions-container, .clear-expenses-container{
         padding: 10px;
-        background-color: #ececec;
+        background-color: var(--app-settings-option-bg-color);
         border-radius: 10px;
         width: 100%;
         display: flex;
@@ -107,8 +108,9 @@
             color: #5182b1;
         }
 
-        .logout-icon{
+        .logout-icon, .trash-can-icon{
             color: #e0425e
         }
+        
     }
 }

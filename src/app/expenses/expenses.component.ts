@@ -94,7 +94,7 @@ export class ExpensesComponent implements OnInit {
       this.refreshTotal();
       this.closeAddExpensePopup();
       this.expenseService.creating = false;
-      this.toastr.success(`expense added : ₹${expense.price}`, 'Success');
+      this.toastr.success(`Expense added : ₹${expense.price}`, 'Success');
     }, (err)=>{
 
       this.toastr.error(err.error.error, 'Failed');

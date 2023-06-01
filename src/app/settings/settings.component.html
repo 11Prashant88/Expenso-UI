@@ -1,6 +1,6 @@
 <div class="settings-container">
     <div class="dark-mode-container">
-        <p class="dark-mode-txt">Dark Mode</p>
+        <label class="lbl">Dark Mode</label>
         <label class="switch">
             <input type="checkbox" [(ngModel)]="isChecked" (change)="modeChange(isChecked ? 'on' : 'off')">
             <span class="slider round"></span>
@@ -8,15 +8,27 @@
     </div>
     <div class="divider"></div>
     <div class="login-container" (click)="openLoginPopup()" *ngIf="!isAuthenticated">
-        <p>Login</p>
+        <label class="lbl">Login</label>
         <span class="menu-item-icon"><i class="fa-solid fa-right-to-bracket login-icon"></i></span>
     </div>
     <div class="logout-container" (click)="openLogoutPopup()" *ngIf="isAuthenticated">
-        <p>Logout</p>
+        <label class="lbl">Logout</label>
         <span class="menu-item-icon"><i class="fa-solid fa-power-off logout-icon"></i></span>
+    </div>
+    <div class="divider"></div>
+    <div class="clear-contributions-container" (click)="openClearContributionsPopup()" *ngIf="isAuthenticated">
+        <label class="lbl">Clear Contributions</label>
+        <span class="menu-item-icon"><i class="fa-solid fa-trash-can trash-can-icon"></i></span>
+    </div>
+    <div class="divider"></div>
+    <div class="clear-expenses-container" (click)="openClearExpensesPopup()" *ngIf="isAuthenticated">
+        <label class="lbl">Clear Expenses</label>
+        <span class="menu-item-icon"><i class="fa-solid fa-trash-can trash-can-icon"></i></span>
     </div>
 </div>
 
 <app-login *ngIf="showLoginPopup" (close)="closeLoginPopup()"></app-login>
-<app-logout *ngIf="showLogoutPopup" (logout)="logout()" (cancel)="closeLogoutPopup()"></app-logout>
+<app-confirmation-popup [type]="contributionTypes.logout" [message]="'Are you logging out?'" [buttonText]="'Logout'" *ngIf="showLogoutPopup" (logout)="logout()" (cancel)="closeLogoutPopup()"></app-confirmation-popup>
+<app-confirmation-popup [type]="contributionTypes.clearContributions" [message]="'Are you sure, you want to clear contributions?'" [buttonText]="'Clear'" *ngIf="showClearContributionsPopup" (clearContributions)="clearContributions()" (cancel)="closeClearContributionsPopup()"></app-confirmation-popup>
+<app-confirmation-popup [type]="contributionTypes.clearExpenses" [message]="'Are you sure, you want to clear expenses?'" [buttonText]="'Clear'" *ngIf="showClearExpensesPopup" (clearExpenses)="clearExpenses()" (cancel)="closeClearExpensesPopup()"></app-confirmation-popup>
 

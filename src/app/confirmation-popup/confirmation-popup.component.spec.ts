@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogoutComponent } from './logout.component';
+import { ConfirmationPopupComponent } from './confirmation-popup.component';
 
-describe('LogoutComponent', () => {
-  let component: LogoutComponent;
-  let fixture: ComponentFixture<LogoutComponent>;
+describe('ConfirmationPopupComponent', () => {
+  let component: ConfirmationPopupComponent;
+  let fixture: ComponentFixture<ConfirmationPopupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogoutComponent ]
+      declarations: [ ConfirmationPopupComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LogoutComponent);
+    fixture = TestBed.createComponent(ConfirmationPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
