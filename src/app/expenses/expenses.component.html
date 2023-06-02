@@ -5,31 +5,36 @@
   </div>
 </div>
 <div class="expense-list" *ngIf="!loadingExpenses; else loader">
-  <div class="expense-container" *ngFor="let expenso of expenses">
-    <p class="month-header">{{getMonthHeader(expenso)}}</p>
-    <div class="expense" *ngFor="let expense of monthlyExpenses(expenso)">
-      <div class="date-item-container">
-        <p class="expense-date">
-          <span class="month-day">{{ formatMonth(expense.createdAt) | uppercase }}</span>
-          <span class="year">{{ formatDay(expense.createdAt) }}</span>
-        </p>
-        <div class="divider"></div>
-        <p class="item-bought">
-          
-          <ng-container [ngSwitch]="expense.item">
-            <img *ngSwitchCase="'Bat'" height="30" width="30" src="../../assets/images/bat.svg" alt="">
-            <img *ngSwitchCase="'Ball'" height="30" width="30" src="../../assets/images/ball.svg" alt="">
-            <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
-            <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
-          </ng-container>
-          <span class="item-name">{{ expense.item }}</span>
-          <span class="item-count">&nbsp;({{expense.count }})</span>
-          
-        </p>
+  <ng-container *ngIf="expenses.length > 0; else noExpenses">
+    <div class="expense-container" *ngFor="let expenso of expenses">
+      <p class="month-header">{{getMonthHeader(expenso)}}</p>
+      <div class="expense" *ngFor="let expense of monthlyExpenses(expenso)">
+        <div class="date-item-container">
+          <p class="expense-date">
+            <span class="month-day">{{ formatMonth(expense.createdAt) | uppercase }}</span>
+            <span class="year">{{ formatDay(expense.createdAt) }}</span>
+          </p>
+          <div class="divider"></div>
+          <p class="item-bought">
+
+            <ng-container [ngSwitch]="expense.item">
+              <img *ngSwitchCase="'Bat'" height="30" width="30" src="../../assets/images/bat.svg" alt="">
+              <img *ngSwitchCase="'Ball'" height="30" width="30" src="../../assets/images/ball.svg" alt="">
+              <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
+              <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
+            </ng-container>
+            <span class="item-name">{{ expense.item }}</span>
+            <span class="item-count">&nbsp;({{expense.count }})</span>
+
+          </p>
+        </div>
+        <p class="expense-amount">{{ expense.uom }}{{ expense.price | currency:"₹"}}</p>
       </div>
-      <p class="expense-amount">{{ expense.uom }}{{ expense.price | currency:"₹"}}</p>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #noExpenses>
+    <h2 class="no-expenses-found">No Expenses Found!</h2>
+  </ng-template>
 </div>
 
 <ng-template #loader>
@@ -38,11 +43,7 @@
   </div>
 </ng-template>
 
-<app-add-popup
-  *ngIf="isShowAddExpensePopup"
-  (close)="closeAddExpensePopup()"
-  [topic]="topic.EXPENSE"
-  (add)="addExpense($event)"
-></app-add-popup>
+<app-add-popup *ngIf="isShowAddExpensePopup" (close)="closeAddExpensePopup()" [topic]="topic.EXPENSE"
+  (add)="addExpense($event)"></app-add-popup>
 
 <div id="overlay" toastContainer></div>

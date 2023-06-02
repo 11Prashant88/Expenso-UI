@@ -1,5 +1,6 @@
 export enum CONFIRMATION_TYPES{
     logout = 'logout',
     clearContributions = 'clearContributions',
-    clearExpenses = 'clearExpenses'
+    clearExpenses = 'clearExpenses',
+    deleteContribution = 'deleteContribution'
 }

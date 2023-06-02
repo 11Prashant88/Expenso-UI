@@ -18,6 +18,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 import { ErrorPopupComponent } from './error-popup/error-popup.component';
+import { ActionsPopupComponent } from './actions-popup/actions-popup.component';
+import { ContributionComponent } from './contributions/contribution/contribution.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule,
@@ -35,7 +37,9 @@ import { ErrorPopupComponent } from './error-popup/error-popup.component';
     LoginComponent,
     SettingsComponent,
     ConfirmationPopupComponent,
-    ErrorPopupComponent
+    ErrorPopupComponent,
+    ActionsPopupComponent,
+    ContributionComponent
   ],
   bootstrap: [AppComponent],
 })

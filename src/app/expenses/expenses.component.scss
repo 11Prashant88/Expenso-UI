@@ -128,6 +128,12 @@
       }
     }
   }
+
+  .no-expenses-found{
+    margin-top: 10px;
+    text-align: center;
+    color: var(--app-common-txt-color);
+  }
 }
 
 .expense-list::-webkit-scrollbar {

@@ -1,0 +1,19 @@
+<div class="contribution">
+    <div class="contributor-name-date-container">
+      <p class="contributed-date">
+        <span class="month-day">{{ formatMonth(contribution?.createdAt) | uppercase }}</span>
+        <span class="year">{{ formatDay(contribution?.createdAt) }}</span>
+      </p>
+      <div class="divider"></div>
+      <p class="contributor-name">{{ contribution?.name }}</p>
+    </div>
+    <div class="amount-three-dots-container">
+      <p class="contributed-amount">
+        {{ contribution?.amount | currency:"₹"}}
+      </p>
+      <span class="three-dots-container" (click)="toggleActionsPopup()">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+        <app-actions-popup *ngIf="showActionsPopup" [actions]="actions" (edit)="editContribution()" (delete)="deleteContribution()"></app-actions-popup>
+      </span>
+    </div>
+  </div>

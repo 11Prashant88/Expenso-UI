@@ -7,24 +7,34 @@
           </label>
     </div>
     <div class="divider"></div>
-    <div class="login-container" (click)="openLoginPopup()" *ngIf="!isAuthenticated">
-        <label class="lbl">Login</label>
-        <span class="menu-item-icon"><i class="fa-solid fa-right-to-bracket login-icon"></i></span>
-    </div>
-    <div class="logout-container" (click)="openLogoutPopup()" *ngIf="isAuthenticated">
-        <label class="lbl">Logout</label>
-        <span class="menu-item-icon"><i class="fa-solid fa-power-off logout-icon"></i></span>
-    </div>
-    <div class="divider"></div>
-    <div class="clear-contributions-container" (click)="openClearContributionsPopup()" *ngIf="isAuthenticated">
-        <label class="lbl">Clear Contributions</label>
-        <span class="menu-item-icon"><i class="fa-solid fa-trash-can trash-can-icon"></i></span>
-    </div>
-    <div class="divider"></div>
-    <div class="clear-expenses-container" (click)="openClearExpensesPopup()" *ngIf="isAuthenticated">
-        <label class="lbl">Clear Expenses</label>
-        <span class="menu-item-icon"><i class="fa-solid fa-trash-can trash-can-icon"></i></span>
-    </div>
+    <ng-container *ngIf="isAuthenticated">
+        <div class="clear-contributions-container" (click)="openClearContributionsPopup()" >
+            <label class="lbl">Clear Contributions</label>
+            <span class="menu-item-icon"><i class="fa-solid fa-trash-can trash-can-icon"></i></span>
+        </div>
+        <div class="divider"></div>
+    </ng-container>
+    <ng-container *ngIf="isAuthenticated">
+        <div class="clear-expenses-container" (click)="openClearExpensesPopup()" *ngIf="isAuthenticated">
+            <label class="lbl">Clear Expenses</label>
+            <span class="menu-item-icon"><i class="fa-solid fa-trash-can trash-can-icon"></i></span>
+        </div>
+        <div class="divider"></div>
+    </ng-container>
+    <ng-container *ngIf="!isAuthenticated">
+        <div class="login-container" (click)="openLoginPopup()">
+            <label class="lbl">Login</label>
+            <span class="menu-item-icon"><i class="fa-solid fa-right-to-bracket login-icon"></i></span>
+        </div>
+        <div class="divider"></div>
+    </ng-container>
+    <ng-container *ngIf="isAuthenticated">
+        <div class="logout-container" (click)="openLogoutPopup()">
+            <label class="lbl">Logout</label>
+            <span class="menu-item-icon"><i class="fa-solid fa-power-off logout-icon"></i></span>
+        </div>
+        <div class="divider"></div>
+    </ng-container>
 </div>
 
 <app-login *ngIf="showLoginPopup" (close)="closeLoginPopup()"></app-login>

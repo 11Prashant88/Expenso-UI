@@ -1,0 +1,14 @@
+.actions-container{
+    width: 100px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    box-shadow: var(--app-actions-popup-box-shadow);
+    .action{
+        padding: 5px 10px;
+        width: 100%;
+        background-color: var(--app-actions-popup-bg-color);
+        color: var(--app-actions-popup-txt-color);
+        border-bottom: 1px solid #e9e9e9;;
+    }
+}

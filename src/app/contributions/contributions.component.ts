@@ -4,8 +4,11 @@ import { TopicEnum } from '../enums/topic.enum';
 import { Contribution } from '../models/contribution.model';
 import { ContributionService } from '../services/contribution.service';
 import * as moment from 'moment';
+
 import * as _ from 'lodash'
 import { AuthService } from '../auth/auth.service';
+import { SUBMIT_TYPE } from '../enums/submit-type.enum';
+import { CONFIRMATION_TYPES } from '../enums/confirmation-types.enum';
 
 @Component({
   selector: 'app-contributions',
@@ -14,9 +17,14 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ContributionsComponent implements OnInit {
   topic
-
   public total: number;
+  public editId: string;
+  public mode: string = 'add';
+  public submitType = {...SUBMIT_TYPE}
   public loadingContributions: boolean = false;
+  public deleteId: string;
+  public showdeleteContributionPopup: boolean = false;
+  public confirmationTypes = {...CONFIRMATION_TYPES}
 
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
@@ -32,6 +40,7 @@ export class ContributionsComponent implements OnInit {
 
   isShowContributinSpendPopup: boolean = false;
   public isAuthenticated: boolean = false;
+  
 
   ngOnInit() {
     this.isAuthenticated = this.authService.isAuthenticated;
@@ -42,20 +51,14 @@ export class ContributionsComponent implements OnInit {
     this.getContributions();
   }
 
-  showAddContributionSpendPopup() {
+  showAddContributionSpendPopup(id?: string) {
+    this.editId = id;
+    this.mode = this.editId ? this.submitType.EDIT : this.submitType.SUBMIT;
     this.isShowContributinSpendPopup = true;
   }
 
   closeAddContributionSpendPopup() {
     this.isShowContributinSpendPopup = false;
-  }
-
-  formatMonth(date: Date){
-    return moment(date).format('MMM');
-  }
-
-  formatDay(date: Date){
-    return moment(date).format('D');
   }
 
   get loaderColor(): string{
@@ -67,6 +70,7 @@ export class ContributionsComponent implements OnInit {
   }
 
   getContributions(){
+    this.contributions = [];
     this.loadingContributions = true;
     this.contributionsService.getContributions().subscribe((contributions: Contribution[])=>{
       this.allContributions = contributions;
@@ -104,6 +108,31 @@ export class ContributionsComponent implements OnInit {
     })
   }
 
+  editContribution(data:{id: string, contribution: Contribution}){
+    this.contributionsService.creating = true;
+    this.contributionsService.editContribution(data).subscribe((contribution: Contribution)=>{
+      console.log('')
+      this.contributions = [];
+      const cont = this.allContributions.findIndex((c)=>{return c.id === data.id})
+      if(cont != -1){
+        this.allContributions[cont] = contribution;
+      }
+      let contributions = this.allContributions;
+      contributions = _.groupBy(this.allContributions, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(contributions).forEach((k)=>{
+        let obj = {}
+        obj[k] = contributions[k]
+        this.contributions.push(obj)
+      })
+      this.refreshTotal();
+      this.closeAddContributionSpendPopup()
+      this.contributionsService.creating = false;
+      this.toastr.success(`Contribution edited : ₹${contribution.amount}`, 'Success');
+    }, (err)=>{
+      this.contributionsService.creating = false;
+    })
+  }
+
   public refreshTotal(){
     this.total = 0;
     this.contributions.forEach((contribution)=>{
@@ -118,5 +147,21 @@ export class ContributionsComponent implements OnInit {
 
   getMonthHeader(contro:{[s: string]:Contribution[]}){
     return Object.keys(contro)[0];
+  }
+
+  deleteContribution(id: string){
+    this.deleteId = id;
+    this.showdeleteContributionPopup = true;
+  }
+
+  confirmDeletion(){
+    this.showdeleteContributionPopup = false;
+    this.contributionsService.deleteContribution(this.deleteId).subscribe((res)=>{
+      this.getContributions();
+    });
+  }
+
+  closeDeleteContributionPopup(){
+    this.showdeleteContributionPopup = false;
   }
 }

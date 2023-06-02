@@ -6,23 +6,15 @@
   </div>
 </div>
 <div class="contribution-list" *ngIf="!loadingContributions; else loader">
-  <div class="contribution-container" *ngFor="let contro of contributions">
-    <p class="month-header">{{getMonthHeader(contro)}}</p>
-    <div class="contribution" *ngFor="let contribution of monthlyContributions(contro)">
-      <div class="contributor-name-date-container">
-        <p class="contributed-date">
-          <span class="month-day">{{ formatMonth(contribution.createdAt) | uppercase }}</span>
-          <span class="year">{{ formatDay(contribution.createdAt) }}</span>
-        </p>
-        <div class="divider"></div>
-        <p class="contributor-name">{{ contribution.name }}</p>
-      </div>
-
-      <p class="contributed-amount">
-        {{ contribution.uom }}{{ contribution.amount | currency:"₹"}}
-      </p>
+  <ng-container *ngIf="contributions.length > 0; else noContributions">
+    <div class="contribution-container" *ngFor="let contro of contributions">
+      <p class="month-header">{{getMonthHeader(contro)}}</p>
+        <app-contribution *ngFor="let contribution of monthlyContributions(contro)" [contribution]="contribution" (edit)="showAddContributionSpendPopup($event)" (delete)="deleteContribution($event)"></app-contribution>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #noContributions>
+    <h2 class="no-contributions-found">No Contributions Found!</h2>
+</ng-template>
 </div>
 
 <ng-template #loader>
@@ -32,6 +24,8 @@
 </ng-template>
 
 <app-add-popup *ngIf="isShowContributinSpendPopup" (close)="closeAddContributionSpendPopup()"
-  [topic]="topic.CONTRIBUTION" (add)="addContribution($event)"></app-add-popup>
+  [topic]="topic.CONTRIBUTION" [mode]="mode" [editId]="editId"  (add)="addContribution($event)" (edit)="editContribution($event)"></app-add-popup>
+
+  <app-confirmation-popup [type]="confirmationTypes.deleteContribution" [message]="'Are you sure, you want delete contribution?'" [buttonText]="'Yes'" *ngIf="showdeleteContributionPopup" (deleteContribution)="confirmDeletion()" (cancel)="closeDeleteContributionPopup()"></app-confirmation-popup>
 
 <div id="overlay" toastContainer></div>
