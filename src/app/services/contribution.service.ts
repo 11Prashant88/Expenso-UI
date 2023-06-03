@@ -16,7 +16,7 @@ export class ContributionService{
         return this.http.get<Contribution[]>(`${environment.apiUrl}/contributions`);
     }
     getContribution(id: string){
-        return this.http.get<Contribution[]>(`${environment.apiUrl}/contributions/${id}`);
+        return this.http.get<Contribution>(`${environment.apiUrl}/contributions/${id}`);
     }
     addContribution(contribution: Contribution){
         return this.http.post<Contribution>(`${environment.apiUrl}/contributions`, contribution);

@@ -1,5 +1,5 @@
 <div class="add-contribution-totalcontainer">
-  <button class="add-contribution" (click)="showAddContributionSpendPopup()" *ngIf="isAuthenticated">Add Contribution</button>
+  <button class="add-contribution" (click)="showAddContributionPopup()" *ngIf="isAuthenticated">Add Contribution</button>
   <div class="total">
     <!-- <span class="total-label">Total :</span> -->
     <span class="total-value">{{total | currency:"₹"}}</span>
@@ -9,7 +9,7 @@
   <ng-container *ngIf="contributions.length > 0; else noContributions">
     <div class="contribution-container" *ngFor="let contro of contributions">
       <p class="month-header">{{getMonthHeader(contro)}}</p>
-        <app-contribution *ngFor="let contribution of monthlyContributions(contro)" [contribution]="contribution" (edit)="showAddContributionSpendPopup($event)" (delete)="deleteContribution($event)"></app-contribution>
+        <app-contribution *ngFor="let contribution of monthlyContributions(contro)" [contribution]="contribution" (edit)="showAddContributionPopup($event)" (delete)="deleteContribution($event)"></app-contribution>
     </div>
   </ng-container>
   <ng-template #noContributions>
@@ -23,7 +23,7 @@
   </div>
 </ng-template>
 
-<app-add-popup *ngIf="isShowContributinSpendPopup" (close)="closeAddContributionSpendPopup()"
+<app-add-popup *ngIf="isShowContributionPopup" (close)="closeAddContributionSpendPopup()"
   [topic]="topic.CONTRIBUTION" [mode]="mode" [editId]="editId"  (add)="addContribution($event)" (edit)="editContribution($event)"></app-add-popup>
 
   <app-confirmation-popup [type]="confirmationTypes.deleteContribution" [message]="'Are you sure, you want delete contribution?'" [buttonText]="'Yes'" *ngIf="showdeleteContributionPopup" (deleteContribution)="confirmDeletion()" (cancel)="closeDeleteContributionPopup()"></app-confirmation-popup>

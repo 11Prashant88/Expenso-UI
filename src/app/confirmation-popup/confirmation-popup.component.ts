@@ -12,6 +12,7 @@ export class ConfirmationPopupComponent implements OnInit {
   @Output() clearContributions = new EventEmitter<void>();
   @Output() clearExpenses = new EventEmitter<void>();
   @Output() deleteContribution = new EventEmitter<void>();
+  @Output() deleteExpense = new EventEmitter<void>();
   @Output() cancel = new EventEmitter<void>();
   @Input() message: string = '';
   @Input() buttonText: string = '';
@@ -34,6 +35,9 @@ export class ConfirmationPopupComponent implements OnInit {
         break;
       case CONFIRMATION_TYPES.deleteContribution:
         this.deleteContribution.emit();
+        break;
+      case CONFIRMATION_TYPES.deleteExpense:
+        this.deleteExpense.emit();
         break;
       default:
         break;

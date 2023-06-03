@@ -1,0 +1,72 @@
+.expense {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 18px 10px;
+    border-radius: 5px;
+    background-color: var(--app-tile-bg-color);
+
+    .date-item-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      .item-bought {
+        
+        display: flex;
+        align-items: center;
+        
+
+        .item-name{
+          color: var(--app-tile-txt-color);
+          // font-weight: bold;
+        }
+        .item-count {
+          color: var(--app-tile-count-color);
+        }
+      }
+
+      .divider{
+        height: 100%;
+        width: 1px;
+        background-color: #aeaeae;
+      }
+  
+      .expense-date {
+        font-size: 12px;
+        color: var(--app-tile-date-color);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        .moth-day{
+
+        }
+        .year{
+
+        }
+      }
+    }
+
+    .price-three-dots-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 10px;
+        position: relative;
+    .expense-amount {
+        color: var(--app-tile-txt-color);
+      // font-weight: bold;
+    }
+    .three-dots-container{
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: var(--app-tile-three-dots-color);
+      }
+    }
+  }

@@ -20,6 +20,7 @@ import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-po
 import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { ActionsPopupComponent } from './actions-popup/actions-popup.component';
 import { ContributionComponent } from './contributions/contribution/contribution.component';
+import { ExpenseComponent } from './expenses/expense/expense.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule,
@@ -39,7 +40,8 @@ import { ContributionComponent } from './contributions/contribution/contribution
     ConfirmationPopupComponent,
     ErrorPopupComponent,
     ActionsPopupComponent,
-    ContributionComponent
+    ContributionComponent,
+    ExpenseComponent
   ],
   bootstrap: [AppComponent],
 })

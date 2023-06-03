@@ -11,9 +11,9 @@
       <p class="contributed-amount">
         {{ contribution?.amount | currency:"₹"}}
       </p>
-      <span class="three-dots-container" (click)="toggleActionsPopup()">
+      <span class="three-dots-container" (click)="toggleActionsPopup()" *ngIf="isAuthenticated">
         <i class="fa-solid fa-ellipsis-vertical"></i>
-        <app-actions-popup *ngIf="showActionsPopup" [actions]="actions" (edit)="editContribution()" (delete)="deleteContribution()"></app-actions-popup>
+        <app-actions-popup *ngIf="showActionsPopup" [actions]="actions" (editContribution)="editContribution()" (delete)="deleteContribution()"></app-actions-popup>
       </span>
     </div>
   </div>

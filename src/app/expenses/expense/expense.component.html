@@ -1,0 +1,32 @@
+<div class="expense">
+    <div class="date-item-container">
+      <p class="expense-date">
+        <span class="month-day">{{ formatMonth(expense.createdAt) | uppercase }}</span>
+        <span class="year">{{ formatDay(expense.createdAt) }}</span>
+      </p>
+      <div class="divider"></div>
+      <p class="item-bought">
+
+        <ng-container [ngSwitch]="expense.item">
+          <img *ngSwitchCase="'Bat'" height="30" width="30" src="../../assets/images/bat.svg" alt="">
+          <img *ngSwitchCase="'Ball'" height="30" width="30" src="../../assets/images/ball.svg" alt="">
+          <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
+          <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
+          <img *ngSwitchCase="'Tape'" height="30" width="30" src="../../assets/images/tape.svg" alt="">
+          <img *ngSwitchCase="'Cake'" height="30" width="30" src="../../assets/images/cake.svg" alt="">
+        </ng-container>
+        <span class="item-name">{{ expense.item }}</span>
+        <span class="item-count">&nbsp;({{expense.count }})</span>
+
+      </p>
+    </div>
+
+    <div class="price-three-dots-container">
+        <p class="expense-amount">{{ expense.price | currency:"₹"}}</p>
+        <span class="three-dots-container" (click)="toggleActionsPopup()" *ngIf="isAuthenticated">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <app-actions-popup *ngIf="showActionsPopup" [actions]="actions" (edit)="editExpense()" (delete)="deleteExpense()"></app-actions-popup>
+          </span>
+    </div>
+    
+  </div>

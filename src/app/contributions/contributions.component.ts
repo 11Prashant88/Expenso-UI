@@ -38,7 +38,7 @@ export class ContributionsComponent implements OnInit {
   contributions: {[key:string]:Contribution[]}[] = [];
   allContributions: Contribution[] = [];
 
-  isShowContributinSpendPopup: boolean = false;
+  isShowContributionPopup: boolean = false;
   public isAuthenticated: boolean = false;
   
 
@@ -51,14 +51,14 @@ export class ContributionsComponent implements OnInit {
     this.getContributions();
   }
 
-  showAddContributionSpendPopup(id?: string) {
+  showAddContributionPopup(id?: string) {
     this.editId = id;
     this.mode = this.editId ? this.submitType.EDIT : this.submitType.SUBMIT;
-    this.isShowContributinSpendPopup = true;
+    this.isShowContributionPopup = true;
   }
 
   closeAddContributionSpendPopup() {
-    this.isShowContributinSpendPopup = false;
+    this.isShowContributionPopup = false;
   }
 
   get loaderColor(): string{

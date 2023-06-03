@@ -6,6 +6,8 @@ import { ExpenseService } from '../services/expense.service';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash'
 import { AuthService } from '../auth/auth.service';
+import { SUBMIT_TYPE } from '../enums/submit-type.enum';
+import { CONFIRMATION_TYPES } from '../enums/confirmation-types.enum';
 
 @Component({
   selector: 'app-expenses',
@@ -16,8 +18,9 @@ export class ExpensesComponent implements OnInit {
   topic;
 
   public total: number;
-
+  public deleteId: string;
   public loadingExpenses: boolean = false;
+  public showdeleteExpensePopup: boolean = false;
 
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
@@ -30,6 +33,11 @@ export class ExpensesComponent implements OnInit {
     this.topic = TopicEnum 
   }
   isShowAddExpensePopup: boolean = false;
+  public editId: string;
+  public mode: string = 'add';
+  private submitType = {...SUBMIT_TYPE}
+  public confirmationTypes = {...CONFIRMATION_TYPES}
+
 
   expenses: {[key:string]:Expense[]}[] = [];
   allExpenses: Expense[] = [];
@@ -43,27 +51,13 @@ export class ExpensesComponent implements OnInit {
     this.getExpenses();
   }
 
-  formatDate(date: Date) {
-    return moment(date).format('MMM, DD, YYYY');
-  }
-
-  formatMonth(date: Date){
-    return moment(date).format('MMM');
-  }
-
-  formatDay(date: Date){
-    return moment(date).format('D');
-  }
-  showAddExpensePopup() {
-    this.isShowAddExpensePopup = true;
-  }
-
   closeAddExpensePopup() {
     this.isShowAddExpensePopup = false;
   }
 
   getExpenses(){
     this.loadingExpenses = true;
+    this.expenses = [];
     this.expenseService.getExpenses().subscribe((expenses: Expense[])=>{
       this.allExpenses = expenses;
       expenses = _.groupBy(expenses, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
@@ -124,5 +118,50 @@ export class ExpensesComponent implements OnInit {
 
   getMonthHeader(expenso:{[s: string]:Expense[]}){
     return Object.keys(expenso)[0];
+  }
+
+  showAddExpensePopup(id?: string) {
+    this.editId = id;
+    this.mode = this.editId ? this.submitType.EDIT : this.submitType.SUBMIT;
+    this.isShowAddExpensePopup = true;
+  }
+  deleteExpense(id: string){
+    this.deleteId = id;
+    this.showdeleteExpensePopup = true;
+  }
+  confirmDeletion(){
+    this.showdeleteExpensePopup = false;
+    this.expenseService.deleteExpense(this.deleteId).subscribe((res)=>{
+      this.getExpenses();
+    });
+  }
+
+  editExpense(data:{id: string, expense: Expense}){
+    this.expenseService.creating = true;
+    this.expenseService.editExpense(data).subscribe((expense: Expense)=>{
+      this.expenses = [];
+      const cont = this.allExpenses.findIndex((c)=>{return c.id === data.id})
+      if(cont != -1){
+        this.allExpenses[cont] = expense;
+      }
+      let expenses = this.allExpenses;
+      expenses = _.groupBy(this.allExpenses, ({createdAt})=> moment(createdAt).format('MMM YYYY'));
+      Object.keys(expenses).forEach((k)=>{
+        let obj = {}
+        obj[k] = expenses[k]
+        this.expenses.push(obj)
+      })
+      this.refreshTotal();
+      this.closeAddExpensePopup();
+      this.expenseService.creating = false;
+      this.toastr.success(`Contribution edited : ₹${expense.price}`, 'Success');
+    }, (err)=>{
+      this.toastr.error(err.error.error, 'Failed');
+      this.expenseService.creating = false;
+    })
+  }
+
+  closeDeleteExpensePopup(){
+    this.showdeleteExpensePopup = false;
   }
 }

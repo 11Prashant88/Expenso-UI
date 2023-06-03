@@ -15,11 +15,24 @@ export class ExpenseService{
     getExpenses(){
         return this.http.get<Expense[]>(`${environment.apiUrl}/expenses`);
     }
+
+    getExpense(id: string){
+        return this.http.get<Expense>(`${environment.apiUrl}/expenses/${id}`);
+    }
+
     addExpense(expense: Expense){
         return this.http.post<Expense>(`${environment.apiUrl}/expenses`, expense);
     }
 
     clearExpenses(){
         return this.http.delete(`${environment.apiUrl}/expenses`);
+    }
+
+    deleteExpense(id: string){
+        return this.http.delete(`${environment.apiUrl}/expenses/${id}`)
+    }
+
+    editExpense(data:{id: string, expense: Expense}){
+        return this.http.patch<Expense>(`${environment.apiUrl}/expenses/${data.id}`, data.expense);
     }
 }

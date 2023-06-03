@@ -8,28 +8,7 @@
   <ng-container *ngIf="expenses.length > 0; else noExpenses">
     <div class="expense-container" *ngFor="let expenso of expenses">
       <p class="month-header">{{getMonthHeader(expenso)}}</p>
-      <div class="expense" *ngFor="let expense of monthlyExpenses(expenso)">
-        <div class="date-item-container">
-          <p class="expense-date">
-            <span class="month-day">{{ formatMonth(expense.createdAt) | uppercase }}</span>
-            <span class="year">{{ formatDay(expense.createdAt) }}</span>
-          </p>
-          <div class="divider"></div>
-          <p class="item-bought">
-
-            <ng-container [ngSwitch]="expense.item">
-              <img *ngSwitchCase="'Bat'" height="30" width="30" src="../../assets/images/bat.svg" alt="">
-              <img *ngSwitchCase="'Ball'" height="30" width="30" src="../../assets/images/ball.svg" alt="">
-              <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
-              <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
-            </ng-container>
-            <span class="item-name">{{ expense.item }}</span>
-            <span class="item-count">&nbsp;({{expense.count }})</span>
-
-          </p>
-        </div>
-        <p class="expense-amount">{{ expense.uom }}{{ expense.price | currency:"₹"}}</p>
-      </div>
+      <app-expense *ngFor="let expense of monthlyExpenses(expenso)" [expense]="expense" (edit)="showAddExpensePopup($event)" (delete)="deleteExpense($event)"></app-expense>
     </div>
   </ng-container>
   <ng-template #noExpenses>
@@ -43,7 +22,9 @@
   </div>
 </ng-template>
 
-<app-add-popup *ngIf="isShowAddExpensePopup" (close)="closeAddExpensePopup()" [topic]="topic.EXPENSE"
-  (add)="addExpense($event)"></app-add-popup>
+<app-add-popup [mode]="mode" [editId]="editId" *ngIf="isShowAddExpensePopup" (close)="closeAddExpensePopup()" [topic]="topic.EXPENSE"
+  (add)="addExpense($event)" (editExpense)="editExpense($event)"></app-add-popup>
+
+  <app-confirmation-popup [type]="confirmationTypes.deleteExpense" [message]="'Are you sure, you want delete expense?'" [buttonText]="'Yes'" *ngIf="showdeleteExpensePopup" (deleteExpense)="confirmDeletion()" (cancel)="closeDeleteExpensePopup()"></app-confirmation-popup>
 
 <div id="overlay" toastContainer></div>
