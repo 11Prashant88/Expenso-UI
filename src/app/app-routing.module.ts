@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { BirthdaysComponent } from './birthdays/birthdays.component';
 import { ContributionsComponent } from './contributions/contributions.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -23,6 +24,10 @@ const appRoutes: Routes = [
   {
     path: 'utilization',
     component: UtilizationComponent,
+  },
+  {
+    path:'birthdays',
+    component: BirthdaysComponent
   },
   {
     path:'settings',

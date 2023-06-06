@@ -24,7 +24,7 @@
 </ng-template>
 
 <app-add-popup *ngIf="isShowContributionPopup" (close)="closeAddContributionSpendPopup()"
-  [topic]="topic.CONTRIBUTION" [mode]="mode" [editId]="editId"  (add)="addContribution($event)" (edit)="editContribution($event)"></app-add-popup>
+  [topic]="topic.CONTRIBUTION" [mode]="mode" [editId]="editId"  (add)="addContribution($event)" (editContribution)="editContribution($event)"></app-add-popup>
 
   <app-confirmation-popup [type]="confirmationTypes.deleteContribution" [message]="'Are you sure, you want delete contribution?'" [buttonText]="'Yes'" *ngIf="showdeleteContributionPopup" (deleteContribution)="confirmDeletion()" (cancel)="closeDeleteContributionPopup()"></app-confirmation-popup>
 

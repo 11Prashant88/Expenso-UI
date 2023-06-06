@@ -3,5 +3,6 @@ export enum CONFIRMATION_TYPES{
     clearContributions = 'clearContributions',
     clearExpenses = 'clearExpenses',
     deleteContribution = 'deleteContribution',
-    deleteExpense = 'deleteExpense'
+    deleteExpense = 'deleteExpense',
+    deleteBirthday = 'deleteBirthday'
 }

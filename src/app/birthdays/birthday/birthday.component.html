@@ -1,0 +1,16 @@
+<div class="birthday">
+    <p class="birthday-name">{{ birthday?.name }}</p>
+    <div class="date-three-dots-container">
+        <p class="birthday-date">
+            <span class="month-day">{{ formatMonth(birthday?.dob) | uppercase }}</span>
+            <span>-</span>
+            <span class="year">{{ formatDay(birthday?.dob) }}</span>
+            <span>-</span>
+            <span class="year">{{ formatYear(birthday?.dob) }}</span>
+          </p>
+          <span class="three-dots-container" (click)="toggleActionsPopup()" *ngIf="isAuthenticated">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <app-actions-popup *ngIf="showActionsPopup" [actions]="actions" (edit)="editBirthday()" (delete)="deleteBirthday()"></app-actions-popup>
+          </span>
+    </div>
+  </div>

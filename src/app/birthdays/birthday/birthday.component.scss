@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.birthday {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 10px;
+    border-radius: 5px;
+    background-color: var(--app-tile-bg-color);
+
+      .birthday-name {
+        color: var(--app-tile-txt-color);
+        // font-weight: bold;
+      }
+    }
+
+    .date-three-dots-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        .birthday-date{
+            color: var(--app-tile-txt-color);
+        }
+
+        .three-dots-container{
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            color: var(--app-tile-three-dots-color);
+          }
+      
+    }
+
+     

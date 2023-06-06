@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+
 .navbar {
   background-color: var(--app-menu-bg);
   height: var(--app-menu-height);
@@ -13,6 +15,7 @@
     justify-self: flex-start;
     align-items: center;
     height: 100%;
+    width: 100%;
     .menu-item {
       height: 100%;
       list-style-type: none;

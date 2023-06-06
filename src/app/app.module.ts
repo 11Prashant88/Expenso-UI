@@ -21,12 +21,16 @@ import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { ActionsPopupComponent } from './actions-popup/actions-popup.component';
 import { ContributionComponent } from './contributions/contribution/contribution.component';
 import { ExpenseComponent } from './expenses/expense/expense.component';
+import { BirthdaysComponent } from './birthdays/birthdays.component';
+import { BirthdayComponent } from './birthdays/birthday/birthday.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule,
     NgxSpinnersModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-right', timeOut: 2000, easeTime: 500}),
-    BrowserAnimationsModule],
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()],
   declarations: [
     AppComponent,
     HelloComponent,
@@ -41,7 +45,9 @@ import { ExpenseComponent } from './expenses/expense/expense.component';
     ErrorPopupComponent,
     ActionsPopupComponent,
     ContributionComponent,
-    ExpenseComponent
+    ExpenseComponent,
+    BirthdaysComponent,
+    BirthdayComponent
   ],
   bootstrap: [AppComponent],
 })

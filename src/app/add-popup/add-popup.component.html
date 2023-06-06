@@ -25,7 +25,7 @@
       </span>
     </div>
 
-    <div class="group" *ngIf="topic === topicEnum.CONTRIBUTION">
+    <div class="group" *ngIf="topic === topicEnum.CONTRIBUTION || topic === topicEnum.BIRTHDAY">
       <label class="label" for="name">Name</label>
       <input required name="name" ngModel #nameRef="ngModel" id="name" type="text" class="txt-box" />
       <span class="err" *ngIf="!nameRef.valid && nameRef.touched">
@@ -35,22 +35,30 @@
 
     <div class="group" *ngIf="topic === topicEnum.CONTRIBUTION || topic === topicEnum.EXPENSE">
       <label class="label" for="amount">{{topic === topicEnum.CONTRIBUTION ? 'Amount ₹' : 'Price ₹'}}</label>
-      <input required [name]="topic === topicEnum.CONTRIBUTION ? 'amount' : 'price'" ngModel #amountRef="ngModel" id="amount" type="number" class="txt-box" />
+      <input required [name]="topic === topicEnum.CONTRIBUTION ? 'amount' : 'price'" ngModel #amountRef="ngModel"
+        id="amount" type="number" class="txt-box" />
       <span class="err" *ngIf="!amountRef.valid && amountRef.touched">
-        <span *ngIf="amountRef?.errors?.required">{{topic === topicEnum.CONTRIBUTION ? 'Please enter amount' : 'Please enter price'}}</span>
+        <span *ngIf="amountRef?.errors?.required">{{topic === topicEnum.CONTRIBUTION ? 'Please enter amount' : 'Please
+          enter price'}}</span>
+      </span>
+    </div>
+
+    <div class="group" *ngIf="topic === topicEnum.BIRTHDAY">
+      <label class="label" for="bdate">DOB</label>
+      <input required name="dob" type="text" ngModel #dobRef="ngModel" placeholder="Datepicker" class="form-control" [bsConfig]="bsDatepickerConfig" #dp="bsDatepicker" placement="top" bsDatepicker>
+      <span class="err" *ngIf="!dobRef.valid && dobRef.touched">
+        <span *ngIf="dobRef?.errors?.required">{{'Please select DOB'}}</span>
       </span>
     </div>
 
     <div class="group">
       <button class="submit-button" [disabled]="!f.valid">
-        {{(!contributionService.creating && !expenseService.creating) ? 'Submit' : ''}}
-        <div class="loader-container" *ngIf="contributionService.creating || expenseService.creating">
+        {{(!contributionService.creating && !expenseService.creating && !birthdayService.creating) ? 'Submit' : ''}}
+        <div class="loader-container" *ngIf="contributionService.creating || expenseService.creating || birthdayService.creating">
           <ngx-pulse-loader color="#ffffff" class="item" size="10"></ngx-pulse-loader>
         </div>
       </button>
     </div>
   </form>
-  <span class="close" (click)="closePopup()"
-    ><i class="fa-solid fa-xmark"></i
-  ></span>
+  <span class="close" (click)="closePopup()"><i class="fa-solid fa-xmark"></i></span>
 </div>

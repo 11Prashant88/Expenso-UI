@@ -1,0 +1,57 @@
+.birthdays-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+
+    .add-birthday {
+      background: var(--app-button-bg);
+      padding: 0px 10px;
+      height: 40px;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .birthdays-list {
+    height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-right: 10px;
+    overflow-y: scroll;
+    margin-top: 10px;
+    padding-bottom: 10px;
+  
+    .birthday-container{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  
+      .month-header{
+        color: var(--app-month-header);
+      }
+    }
+  
+    .no-contributions-found{
+      margin-top: 10px;
+      text-align: center;
+      color: var(--app-common-txt-color);
+    }
+  }
+
+  .loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - var(--app-menu-height));
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    position: fixed;
+  }

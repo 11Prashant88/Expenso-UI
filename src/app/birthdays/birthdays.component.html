@@ -1,0 +1,27 @@
+<div class="birthdays-container">
+    <button class="add-birthday" (click)="showAddBirthdayPopup()" *ngIf="isAuthenticated">Add
+        Birthday</button>
+</div>
+<div class="birthdays-list" *ngIf="!loadingBirthdays; else loader">
+    <ng-container *ngIf="birthdays.length > 0; else noBirthdays">
+        <div class="birthday-container" *ngFor="let bdate of birthdays">
+            <p class="month-header">{{getMonthHeader(bdate)}}</p>
+            <app-birthday *ngFor="let birthday of monthlyBirthdays(bdate)" [birthday]="birthday"
+                (edit)="showAddBirthdayPopup($event)" (delete)="deleteBirthday($event)"></app-birthday>
+        </div>
+    </ng-container>
+    <ng-template #noBirthdays>
+        <h2 class="no-contributions-found">No Birthdays Found!</h2>
+    </ng-template>
+</div>
+
+<ng-template #loader>
+    <div class="loader-container">
+      <ngx-square-loader [color]="loaderColor" class="item" size="30"></ngx-square-loader>
+    </div>
+  </ng-template>
+
+<app-add-popup *ngIf="isShowBirthdayPopup" (close)="closeAddBirthdayPopup()"
+  [topic]="topic.BIRTHDAY" [mode]="mode" [editId]="editId"  (add)="addBirthday($event)" (editBirthday)="editBirthday($event)"></app-add-popup>
+
+  <app-confirmation-popup [type]="confirmationTypes.deleteBirthday" [message]="'Are you sure, you want delete birthday?'" [buttonText]="'Yes'" *ngIf="showdeleteBirthdayPopup" (deleteBirthday)="confirmDeletion()" (cancel)="closeDeleteBirthdayPopup()"></app-confirmation-popup>
