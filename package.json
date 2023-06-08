@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
+    "@angular/service-worker": "^16.0.4",
     "highcharts": "^10.3.3",
     "moment": "2.26.0",
     "ngx-bootstrap": "^5.6.1",

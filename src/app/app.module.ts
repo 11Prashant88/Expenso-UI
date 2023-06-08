@@ -24,13 +24,16 @@ import { ExpenseComponent } from './expenses/expense/expense.component';
 import { BirthdaysComponent } from './birthdays/birthdays.component';
 import { BirthdayComponent } from './birthdays/birthday/birthday.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule,
     NgxSpinnersModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-right', timeOut: 2000, easeTime: 500}),
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()],
+    BsDatepickerModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   declarations: [
     AppComponent,
     HelloComponent,
