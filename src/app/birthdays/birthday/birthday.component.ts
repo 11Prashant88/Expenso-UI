@@ -32,16 +32,8 @@ export class BirthdayComponent implements OnInit {
     this.showActionsPopup = !this.showActionsPopup;
   }
 
-  formatMonth(date: Date){
-    return moment(date).format('MMM');
-  }
-
-  formatDay(date: Date){
-    return moment(date).format('D');
-  }
-
-  formatYear(date: Date){
-    return moment(date).format('YYYY');
+  formatDOB(date: Date){
+    return moment(date).format('D/MM/YYYY');
   }
 
   deleteBirthday(){
