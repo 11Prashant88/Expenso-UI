@@ -1,8 +1,9 @@
 <div class="add-contribution-totalcontainer">
-  <button class="add-contribution" (click)="showAddContributionPopup()" *ngIf="isAuthenticated">Add Contribution</button>
+  
   <div class="total">
     <!-- <span class="total-label">Total :</span> -->
-    <span class="total-value">{{total | currency:"₹"}}</span>
+    <div class="total-value">{{total | currency:"₹"}}</div>
+    <button class="add-contribution" (click)="showAddContributionPopup()" *ngIf="isAuthenticated">+</button>
   </div>
 </div>
 <div class="contribution-list" *ngIf="!loadingContributions; else loader">

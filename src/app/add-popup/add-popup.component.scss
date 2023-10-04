@@ -21,6 +21,7 @@
   padding: 50px 50px;
   // padding-top: 50px;
   animation: 0.8s forwards cubic-bezier(0.42, 0, 0.68, 1.71) animatepopup 0s;
+  z-index: 1;
 
   .group {
     display: flex;

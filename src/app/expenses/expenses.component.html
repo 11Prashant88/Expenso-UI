@@ -1,7 +1,7 @@
 <div class="add-expense-totalcontainer">
-  <button class="add-expense" (click)="showAddExpensePopup()" *ngIf="isAuthenticated">Add Expense</button>
   <div class="total">
-    <span class="total-value">{{total | currency:"₹"}}</span>
+    <div class="total-value">{{total | currency:"₹"}}</div>
+    <button class="add-expense" (click)="showAddExpensePopup()" *ngIf="isAuthenticated">+</button>
   </div>
 </div>
 <div class="expense-list" *ngIf="!loadingExpenses; else loader">

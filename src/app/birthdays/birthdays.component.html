@@ -1,6 +1,12 @@
 <div class="birthdays-container" *ngIf="isAuthenticated">
-    <button class="add-birthday" (click)="showAddBirthdayPopup()">Add
-        Birthday</button>
+    <!-- <button class="add-birthday" (click)="showAddBirthdayPopup()">Add
+        Birthday</button> -->
+
+        <div class="birthdays">
+            <!-- <span class="total-label">Total :</span> -->
+            <div class="birthdays-text">Birthdays</div>
+            <button class="add-birthday" (click)="showAddBirthdayPopup()" *ngIf="isAuthenticated">+</button>
+          </div>
 </div>
 <div class="birthdays-list" *ngIf="!loadingBirthdays; else loader">
     <ng-container *ngIf="birthdays.length > 0; else noBirthdays">
