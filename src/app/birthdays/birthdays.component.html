@@ -1,5 +1,5 @@
-<div class="birthdays-container">
-    <button class="add-birthday" (click)="showAddBirthdayPopup()" *ngIf="isAuthenticated">Add
+<div class="birthdays-container" *ngIf="isAuthenticated">
+    <button class="add-birthday" (click)="showAddBirthdayPopup()">Add
         Birthday</button>
 </div>
 <div class="birthdays-list" *ngIf="!loadingBirthdays; else loader">

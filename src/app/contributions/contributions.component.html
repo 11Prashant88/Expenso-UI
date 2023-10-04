@@ -8,7 +8,9 @@
 <div class="contribution-list" *ngIf="!loadingContributions; else loader">
   <ng-container *ngIf="contributions.length > 0; else noContributions">
     <div class="contribution-container" *ngFor="let contro of contributions">
-      <p class="month-header">{{getMonthHeader(contro)}}</p>
+      <p class="month-header">
+        <span class="menu-item-icon"><i class="fa-solid fa-calendar"></i></span>
+        {{getMonthHeader(contro)}}</p>
         <app-contribution *ngFor="let contribution of monthlyContributions(contro)" [contribution]="contribution" (edit)="showAddContributionPopup($event)" (delete)="deleteContribution($event)"></app-contribution>
     </div>
   </ng-container>

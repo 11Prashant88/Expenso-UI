@@ -110,7 +110,7 @@ export class BirthdaysComponent implements OnInit {
       })
       this.closeAddBirthdayPopup()
       this.birthdayService.creating = false;
-      this.toastr.success(`Birthday added : ₹${birthday.name}`, 'Success');
+      this.toastr.success(`Birthday added : ${birthday.name}`, 'Success');
     }, (err) => {
       this.birthdayService.creating = false;
     })
@@ -143,7 +143,7 @@ export class BirthdaysComponent implements OnInit {
       })
       this.closeAddBirthdayPopup()
       this.birthdayService.creating = false;
-      this.toastr.success(`Birthday edited : ₹${birthday.name}`, 'Success');
+      this.toastr.success(`Birthday edited : ${birthday.name}`, 'Success');
     }, (err) => {
       this.birthdayService.creating = false;
     })
