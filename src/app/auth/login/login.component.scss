@@ -12,6 +12,7 @@
     background-color: var(--app-login-bg);
     display: flex;
     top: 0;
+    z-index: 1;
     form{
         display: flex;
         flex-direction: column;

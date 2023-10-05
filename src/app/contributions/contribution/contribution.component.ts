@@ -41,6 +41,10 @@ export class ContributionComponent implements OnInit {
     return moment(date).format('D');
   }
 
+  formatYear(date: Date){
+    return moment(date).format('YYYY');
+  }
+
   deleteContribution(){
     this.delete.emit(this.contribution.id);
   }

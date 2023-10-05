@@ -21,6 +21,14 @@ export class UtilizationComponent implements OnInit {
     this.getExpenses();
   }
 
+  get loaderColor(): string{
+    if(localStorage.getItem('application-theme') === 'app-light'){
+      return 'white';
+    } else {
+      return '#02c7c7'
+    }
+  }
+
   getExpenses(){
     this.loadingExpenses = true;
     this.expenseService.getExpenses().pipe(map((expenses)=>{return expenses.map((s)=>{return {name:s.item, y:s.price}})})).subscribe((expenses:[])=>{

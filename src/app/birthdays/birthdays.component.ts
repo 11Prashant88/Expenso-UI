@@ -151,7 +151,7 @@ export class BirthdaysComponent implements OnInit {
 
   get loaderColor(): string {
     if (localStorage.getItem('application-theme') === 'app-light') {
-      return 'pink';
+      return 'white';
     } else {
       return '#02c7c7'
     }

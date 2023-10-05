@@ -1,11 +1,17 @@
 <div class="contribution">
-    <div class="contributor-name-date-container">
-      <p class="contributed-date">
-        <span class="month-day">{{ formatMonth(contribution?.createdAt) | uppercase }}</span>
-        <span class="year">{{ formatDay(contribution?.createdAt) }}</span>
-      </p>
-      <div class="divider"></div>
-      <p class="contributor-name">{{ contribution?.name }}</p>
+    <div class="tile">
+      <div>
+        <img class="pic" height="50" width="50" src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c171004/sachin-tendulkar.jpg" alt="">
+      </div>
+      <!-- <div class="divider"></div> -->
+      <div class="contributor-name-and-date-container">
+        <p class="contributor-name">{{ contribution?.name }}</p>
+        <p class="contributed-date">
+          <span class="month-day">{{ formatMonth(contribution?.createdAt) }}</span>
+          <span class="year">{{ formatDay(contribution?.createdAt) }}</span>
+          <span class="year">{{ formatYear(contribution?.createdAt) }}</span>
+        </p>
+      </div>
     </div>
     <div class="amount-three-dots-container">
       <p class="contributed-amount">

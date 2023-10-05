@@ -10,14 +10,26 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 10px;
+    padding: 10px;
     // border-radius: 5px;
     background-color: var(--app-tile-bg-color);
+
+    .pic-and-name-container{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+
+      .pic{
+        border-radius: 50%;
+      }
 
       .birthday-name {
         color: var(--app-tile-txt-color);
         // font-weight: bold;
       }
+    }
     }
 
     .date-three-dots-container{

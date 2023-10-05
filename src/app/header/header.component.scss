@@ -16,6 +16,7 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    background-color: var(--app-menu-bg);
     .menu-item {
       height: 100%;
       list-style-type: none;
@@ -30,7 +31,7 @@
 
       .menu-item-text,
       .menu-item-icon {
-        color: #9e73cb;
+        color: var(--app-menu-item-text-color);
         font-size: 18px;
       }
     }

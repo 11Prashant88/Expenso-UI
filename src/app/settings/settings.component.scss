@@ -53,7 +53,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: #ffffff;
             -webkit-transition: .4s;
             transition: .4s;
           }
@@ -65,7 +65,7 @@
             width: 20px;
             left: 4px;
             bottom: 4px;
-            background-color: white;
+            background-color: #6835aad4;
             -webkit-transition: .4s;
             transition: .4s;
           }
@@ -111,11 +111,11 @@
         align-items: center;
 
         .login-icon{
-            color: #5182b1;
+            color: #ffffff;
         }
 
         .logout-icon, .trash-can-icon{
-            color: #8d5cb4
+            color: #ffffff
         }
         
     }

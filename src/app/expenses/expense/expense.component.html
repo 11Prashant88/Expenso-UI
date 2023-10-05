@@ -1,24 +1,29 @@
 <div class="expense">
     <div class="date-item-container">
-      <p class="expense-date">
-        <span class="month-day">{{ formatMonth(expense.createdAt) | uppercase }}</span>
-        <span class="year">{{ formatDay(expense.createdAt) }}</span>
-      </p>
-      <div class="divider"></div>
       <p class="item-bought">
 
         <ng-container [ngSwitch]="expense.item">
-          <img *ngSwitchCase="'Bat'" height="30" width="30" src="../../assets/images/bat.svg" alt="">
-          <img *ngSwitchCase="'Ball'" height="30" width="30" src="../../assets/images/ball.svg" alt="">
-          <img *ngSwitchCase="'Grip'" height="30" width="30" src="../../assets/images/grip.jpg" alt="">
-          <img *ngSwitchCase="'Stump'" height="30" width="30" src="../../assets/images/stumps.svg" alt="">
-          <img *ngSwitchCase="'Tape'" height="30" width="30" src="../../assets/images/tape.svg" alt="">
-          <img *ngSwitchCase="'Cake'" height="30" width="30" src="../../assets/images/cake.svg" alt="">
+          <img *ngSwitchCase="'Bat'" height="50" width="50" src="../../assets/images/bat.svg" alt="">
+          <img *ngSwitchCase="'Ball'" height="50" width="50" src="../../assets/images/ball.svg" alt="">
+          <img *ngSwitchCase="'Grip'" height="50" width="50" src="../../assets/images/grip.jpg" alt="">
+          <img *ngSwitchCase="'Stump'" height="50" width="50" src="../../assets/images/stumps.svg" alt="">
+          <img *ngSwitchCase="'Tape'" height="50" width="50" src="../../assets/images/tape.svg" alt="">
+          <img *ngSwitchCase="'Cake'" height="50" width="50" src="../../assets/images/cake.svg" alt="">
         </ng-container>
-        <span class="item-name">{{ expense.item }}</span>
-        <span class="item-count">&nbsp;({{expense.count }})</span>
-
       </p>
+      <!-- <div class="divider"></div> -->
+      <div class="item-details-and-date-container">
+        <div class="item-details">
+          <span class="item-name">{{ expense.item }}</span>
+          <span class="item-count">&nbsp;({{expense.count }})</span>
+        </div>
+        <p class="expense-date">
+          <span class="month-day">{{ formatMonth(expense.createdAt) }}</span>
+          <span class="year">{{ formatDay(expense.createdAt) }}</span>
+          <span class="year">{{ formatYear(expense.createdAt) }}</span>
+        </p>
+      </div>
+      
     </div>
 
     <div class="price-three-dots-container">

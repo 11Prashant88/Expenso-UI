@@ -44,6 +44,10 @@ export class ExpenseComponent implements OnInit {
     return moment(date).format('D');
   }
 
+  formatYear(date: Date){
+    return moment(date).format('YYYY');
+  }
+
   deleteExpense(){
     this.delete.emit(this.expense.id);
   }
