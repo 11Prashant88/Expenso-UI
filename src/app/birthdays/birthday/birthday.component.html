@@ -6,7 +6,7 @@
     
     <div class="date-three-dots-container">
         <p class="birthday-date">
-            <span class="month-day">{{ formatDOB(birthday?.dob) | uppercase }}</span>
+            <span class="month-day">{{ formatDOB(birthday?.dob) }}</span>
           </p>
           <span class="three-dots-container" (click)="toggleActionsPopup()" *ngIf="isAuthenticated">
             <i class="fa-solid fa-ellipsis-vertical"></i>

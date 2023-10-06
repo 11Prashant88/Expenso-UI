@@ -2,7 +2,12 @@
   
   <div class="total">
     <!-- <span class="total-label">Total :</span> -->
-    <div class="total-value">{{total | currency:"₹"}}</div>
+    <div class="total-value" *ngIf="!loadingContributions; else amountLoader">{{total | currency:"₹"}}</div>
+    <ng-template #amountLoader>
+      <div class="amount-loader-container">
+        <ngx-pulse-loader [color]="loaderColor" class="item" size="12"></ngx-pulse-loader>
+      </div>
+    </ng-template>
     <button class="add-contribution" (click)="showAddContributionPopup()" *ngIf="isAuthenticated">+</button>
   </div>
 </div>

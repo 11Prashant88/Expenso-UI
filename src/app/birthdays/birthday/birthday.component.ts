@@ -33,7 +33,7 @@ export class BirthdayComponent implements OnInit {
   }
 
   formatDOB(date: Date){
-    return moment(date).format('D/MM/YYYY');
+    return moment(date).format('MMM D - YYYY');
   }
 
   deleteBirthday(){

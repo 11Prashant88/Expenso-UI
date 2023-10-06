@@ -1,6 +1,11 @@
 <div class="add-expense-totalcontainer">
   <div class="total">
-    <div class="total-value">{{total | currency:"₹"}}</div>
+    <div class="total-value" *ngIf="!loadingExpenses; else amountLoader">{{total | currency:"₹"}}</div>
+    <ng-template #amountLoader>
+      <div class="amount-loader-container">
+        <ngx-pulse-loader [color]="loaderColor" class="item" size="12"></ngx-pulse-loader>
+      </div>
+    </ng-template>
     <button class="add-expense" (click)="showAddExpensePopup()" *ngIf="isAuthenticated">+</button>
   </div>
 </div>

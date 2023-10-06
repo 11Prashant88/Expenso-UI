@@ -21,7 +21,7 @@ body[application-theme='app-light'] {
   --app-total-bg-color: #ffffff30;
 
   // button
-  --app-button-bg: linear-gradient(45deg, #b337b6, #ff7c7c);
+  --app-button-bg: #6835aad4;
   --app-button-txt-color: #ffffff;
   --app-button-box-shadow: #f77a9099 0px 0px 10px 2px;
 
@@ -80,19 +80,17 @@ body[application-theme='app-dark'] {
 
   //tile
   --app-tile-count-color: #97bbe8b0;
-  --app-tile-date-color: #97bbe8b0;
-  --app-tile-bg-color: #ffffff26;
-  --app-tile-txt-color: cyan;
+  --app-tile-date-color: #adadad;
+  --app-tile-bg-color: #ffffff;
+  --app-tile-txt-color: #424242;
   --app-tile-three-dots-color: #ffffff;
 
-  --app-month-header: #a8d5e1;
-
-  --app-total-txt-color: #ffffff;
+  --app-month-header: #ffffff;
   --app-total-txt-color: #ffffff;
   --app-total-bg-color: #ffffff30;
 
   // button
-  --app-button-bg: cyan;
+  --app-button-bg: #424242;
   --app-button-txt-color: 'black';
   --app-button-box-shadow: #f77a9099 0px 0px 10px 2px;
 
