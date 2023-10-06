@@ -6,6 +6,7 @@
     height: 100%;
     width: 100%;
     background-color: #000000a3;
+    z-index: 1;
 }
 
 .error-container {
@@ -16,6 +17,7 @@
     width: 90%;
     top: 0;
     background-color: #ffffff;
+    z-index: 2;
 
     .message-title-container {
         height: 50px;

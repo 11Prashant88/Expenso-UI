@@ -14,7 +14,7 @@ body[application-theme='app-light'] {
   --app-tile-date-color: #adadad;
   --app-tile-bg-color: #ffffff;
   --app-tile-txt-color : #646464;
-  --app-tile-three-dots-color: #000000;
+  --app-tile-three-dots-color: #6835aad4;
 
   --app-month-header: #ffffff;
   --app-total-txt-color: #ffffff;
@@ -23,7 +23,7 @@ body[application-theme='app-light'] {
   // button
   --app-button-bg: #6835aad4;
   --app-button-txt-color: #ffffff;
-  --app-button-box-shadow: #f77a9099 0px 0px 10px 2px;
+  --app-button-box-shadow: #6835aad4 0px 0px 10px 2px;
 
   //scrollbar
   --app-scrollbar-width: 4px;
@@ -32,14 +32,14 @@ body[application-theme='app-light'] {
   
   //popup
   --app-popup-bg-color: #ffffff;
-  --app-popup-lbl-color: #ff8298;
+  --app-popup-lbl-color: #6835aad4;
 
   //dark mode toggle
   --app--darkmode-bg: #000000;
 
   //login screen
   --app-login-bg: #ffffff;
-  --app-login-lbl-color: #ff8298;
+  --app-login-lbl-color: #6835aad4;
 
   //logout screen
   --app-logout-question-txt-color : '#000000';
@@ -48,10 +48,10 @@ body[application-theme='app-light'] {
   --app-logout-btn-txt-color: #ffffff;
 
   //common
-  --app-common-lbl-color: #ff8298;
-  --app-common-txt-color: #000000;
-  --app-common-txt-box-border: 1px solid #ff8298;
-  --app-common-txt-box-shadow: 0px 0px 4px 2px pink;
+  --app-common-lbl-color: #424242;
+  --app-common-txt-color: #424242;
+  --app-common-txt-box-border: 1px solid #6835aad4;
+  --app-common-txt-box-shadow: 0px 0px 4px 2px #6835aad4;
 
   //settings
   --app-settings-option-bg-color: #6835aad4;
@@ -83,7 +83,7 @@ body[application-theme='app-dark'] {
   --app-tile-date-color: #adadad;
   --app-tile-bg-color: #ffffff;
   --app-tile-txt-color: #424242;
-  --app-tile-three-dots-color: #ffffff;
+  --app-tile-three-dots-color: #424242;
 
   --app-month-header: #ffffff;
   --app-total-txt-color: #ffffff;
@@ -91,8 +91,8 @@ body[application-theme='app-dark'] {
 
   // button
   --app-button-bg: #424242;
-  --app-button-txt-color: 'black';
-  --app-button-box-shadow: #f77a9099 0px 0px 10px 2px;
+  --app-button-txt-color: #ffffff;
+  --app-button-box-shadow: #424242 0px 0px 10px 2px;
 
   //scrollbar
   --app-scrollbar-width: 4px;
@@ -100,16 +100,16 @@ body[application-theme='app-dark'] {
   --app-scrollbar-thumb-color: #ffffff;
   
   //popup
-  --app-popup-bg-color: #212730;
-  --app-popup-lbl-color: #ffffff;
+  --app-popup-bg-color: #ffffff;
+  --app-popup-lbl-color: #424242;
 
 
   //dark mode toggle
   --app--darkmode-bg: cyan;
 
   //login screen
-  --app-login-bg: #212730;
-  --app-login-lbl-color: #ffffff;
+  --app-login-bg: #ffffff;
+  --app-login-lbl-color: #424242;
 
   //logout screen
   --app-logout-question-txt-color : '#000000';
@@ -118,10 +118,10 @@ body[application-theme='app-dark'] {
   --app-logout-btn-txt-color: #ffffff;
 
   //common
-  --app-common-lbl-color: #ffffff;
-  --app-common-txt-color: #ffffff;
-  --app-common-txt-box-border: 1px solid #7aeaf6;
-  --app-common-txt-box-shadow: none;
+  --app-common-lbl-color: #424242;
+  --app-common-txt-color: #424242;
+  --app-common-txt-box-border: 1px solid #424242;
+  --app-common-txt-box-shadow:  0px 0px 4px 2px #424242;
 
   //settings
   --app-settings-option-bg-color: #424242;
