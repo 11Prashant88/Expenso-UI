@@ -57,6 +57,9 @@ body[application-theme='app-light'] {
   --app-settings-option-bg-color: #6835aad4;
   --app-settings-option-txt-color: #ffffff;
   --app-settings-option-divider-bg-color: #ffffff;
+  --app-slider-toggle-body-color: #ffffff;
+  --app-slider-toggle-thumb-color: #6835aad4;
+  
 
   //action popup
   --app-actions-popup-bg-color: #ffffff;
@@ -67,12 +70,12 @@ body[application-theme='app-light'] {
 body[application-theme='app-dark'] {
   //app
   --app-bg-color: black;
-  --app-bg-gradient: linear-gradient(98deg, #6835aad4, #ffc3ff30);
+  --app-bg-gradient: linear-gradient(-215deg, #545151d4, #ffc3ff30);
 
   //menu
   --app-menu-bg: #424242;
-  --app-menu-item-text-color: gray;
-  --app-menu-item-active-text-color: cyan;
+  --app-menu-item-text-color: #9c9c9c;
+  --app-menu-item-active-text-color: #ffffff;
   --app-menu-height: 50px;
 
   //tile
@@ -123,9 +126,11 @@ body[application-theme='app-dark'] {
   --app-common-txt-box-shadow: none;
 
   //settings
-  --app-settings-option-bg-color: #f2f2f24a;
+  --app-settings-option-bg-color: #424242;
   --app-settings-option-txt-color: #ffffff;
   --app-settings-option-divider-bg-color: #3c3c3c;
+  --app-slider-toggle-body-color: #ffffff;
+  --app-slider-toggle-thumb-color: #000000;
 
   //action popup
   --app-actions-popup-bg-color: #000000;

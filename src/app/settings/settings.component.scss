@@ -53,7 +53,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ffffff;
+            background-color: var(--app-slider-toggle-body-color);
             -webkit-transition: .4s;
             transition: .4s;
           }
@@ -65,17 +65,17 @@
             width: 20px;
             left: 4px;
             bottom: 4px;
-            background-color: #6835aad4;
+            background-color: var(--app-slider-toggle-thumb-color);
             -webkit-transition: .4s;
             transition: .4s;
           }
           
           input:checked + .slider {
-            background-color: var(--app--darkmode-bg);
+            background-color: var(--app-slider-toggle-body-color);
           }
           
           input:focus + .slider {
-            box-shadow: 0 0 1px var(--app--darkmode-bg);
+            box-shadow: 0 0 1px var(--app-slider-toggle-thumb-color);
           }
           
           input:checked + .slider:before {

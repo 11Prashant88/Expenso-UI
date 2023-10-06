@@ -25,7 +25,7 @@ export class UtilizationComponent implements OnInit {
     if(localStorage.getItem('application-theme') === 'app-light'){
       return 'white';
     } else {
-      return '#02c7c7'
+      return '#ffffff'
     }
   }
 
